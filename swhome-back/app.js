@@ -8,9 +8,12 @@ const logger = require('morgan');
 
 const LocalStrategy = require('passport-local');
 const passport = require('passport');
+const passportSetup = require('./config/passport');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const cloudinary = require('cloudinary');
 
+passportSetup(passport);
 const app = express();
 
 // Mongoose
@@ -35,6 +38,19 @@ cloudinary.config({
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET
 })
+
+// passport middleware
+app.use(session({
+  secret: process.env.SECRET_SESSION,
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    maxAge: 2419200000
+  }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
