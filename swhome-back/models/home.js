@@ -11,17 +11,14 @@ const homeSchema = new Schema({
     city: {type: String, required: true},
     state: {type: String, required: true},
     zipCode: {type: String, required: true},
+    country: {type: String, required: true}
   },
   description: {type: String, required: true},
   images: [{
     url: String,
     id: String,
   }],
-  reviews: [{
-    user: {type : Schema.Types.ObjectId, ref: 'Users', required:true},
-    rate: {type: Number, required: true},
-    comment: {type: String}
-  }]
+  reviews: {type : Schema.Types.ObjectId, ref: 'Reviews'}
 });
 
 homeSchema.set('timestamps', true);
