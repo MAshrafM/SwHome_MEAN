@@ -20,7 +20,6 @@ const router = express.Router();
 router.get('/myhome', (req, res, next) => {
   if(req.isAuthenticated()){
     const userId = req.user._id;
-  
     Home.find({owner: userId}).then((userHomes, err) => {
       if(err){
         res.json(err);
@@ -28,6 +27,7 @@ router.get('/myhome', (req, res, next) => {
       }
       res.json(userHomes);
     }).catch(error => next(error));
+    return;
   }
   
   res.status(403).json({message: 'Unauthorized access'});
@@ -51,6 +51,8 @@ router.get('/myhome/:id', (req, res, next) => {
       
       res.json(userHome);
     }).catch(error => next(error));
+    
+    return;
   }
   
   res.status(403).json({message: 'Unauthorized access'});  
@@ -80,6 +82,8 @@ router.post('/myhome', parser, (req, res, next) => {
     userHome.save().then(userHome => {
       res.json({message: 'New Home Added!'});
     }).catch(error => next(error));
+    
+    return;
   }
   
   res.status(403).json({message: 'Unauthorized access'}); 
@@ -105,6 +109,8 @@ router.put('/myhome/:id', (req, res, next) => {
     Home.findByIdAndUpdate(homeId, homeUpdate, {new: true}).then(home => {
       return res.json({message: 'Home updated!'});
     }).catch(error => next(error));
+    
+    return;
   }
   
   res.status(403).json({message: 'Unauthorized access'}); 
@@ -123,6 +129,8 @@ router.delete('/myhome/:id', (req, res, next) => {
     Home.remove({_id: homeId}).then((message) => {
       return res.json({message: 'Home removed!'});
     }).catch(error => next(error));
+    
+    return;
   }
   
   res.status(403).json({message: 'Unauthorized access'}); 
