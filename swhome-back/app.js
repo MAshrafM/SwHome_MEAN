@@ -69,10 +69,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const homeRouter = require('./routes/home');
+const reviewRouter = require('./routes/review');
 
 app.use('/', indexRouter);
 app.use('/api', authRouter);
 app.use('/api', homeRouter);
+app.use('/api', reviewRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
