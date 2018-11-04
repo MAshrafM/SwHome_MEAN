@@ -22,7 +22,7 @@ const travelSchema = new Schema({
   },
   homeType: {
     type: String,
-    enum: ['Home', 'Apt', 'Both'],
+    enum: ['House', 'Apt', 'Both'],
     required: true
   },
   locationType: {
@@ -32,7 +32,7 @@ const travelSchema = new Schema({
   },
   settingType: {
     type: String,
-    enum: ['Tropical', 'Mountainous', 'City']
+    enum: ['Tropical', 'Mountainous', 'City', 'Coastal', 'All']
   },
   active: {
     type: Boolean,
@@ -40,11 +40,11 @@ const travelSchema = new Schema({
   },
   homesLiked: [{
     type: Schema.Types.ObjectId,
-    ref: 'Homes'
+    ref: 'Travels'
   }],
   homesDisliked: [{
     type: Schema.Types.ObjectId,
-    ref: 'Homes'
+    ref: 'Travels'
   }],
 }, {
   timestamps: {

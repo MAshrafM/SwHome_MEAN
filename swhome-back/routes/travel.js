@@ -92,4 +92,52 @@ router.delete('/travel/:id', (req, res, next) => {
   res.status(403).json({message: 'Unauthorized access'});
 });
 
+// like plan
+router.put('/like/:id', (req, res, next) => {
+  if(req.isAuthenticated()){
+    const likeId = mongoose.Types.ObjectId(req.params.id);
+    let travelId;
+    
+    if(!mongoose.Types.ObjectId.isValid(likelId)){
+      res.status(400).json({message: 'id not found'});
+      return;
+    }
+    
+    Travel.find({$and: [{user: mongoose.Types.ObjectId(req.user._id)}, {active: true}]}, {_id: 1}).exec().then((result) => {
+      travelId = result[0]._id;
+      Travel.updateOne({_id: travelId}, {$push: {homesLiked: likeId}}).then(() => {
+        return res.json({message: 'Like Added'});
+      }).catch(err => next(err));
+    }).catch(err => next(err));
+    
+    return;
+  }
+  
+  res.status(403).json({message: 'Unauthorized access'});
+});
+
+// dislike plan
+router.put('/dislike/:id', (req, res, next) => {
+  if(req.isAuthenticated()){
+    const dislikeId = mongoose.Types.ObjectId(req.params.id);
+    let travelId;
+    
+    if(!mongoose.Types.ObjectId.isValid(likelId)){
+      res.status(400).json({message: 'id not found'});
+      return;
+    }
+    
+    Travel.find({$and: [{user: mongoose.Types.ObjectId(req.user._id)}, {active: true}]}, {_id: 1}).exec().then((result) => {
+      travelId = result[0]._id;
+      Travel.updateOne({_id: travelId}, {$push: {homesDisliked: dislikeId}}).then(() => {
+        return res.json({message: 'Dislike Added'});
+      }).catch(err => next(err));
+    }).catch(err => next(err));
+    
+    return;
+  }
+  
+  res.status(403).json({message: 'Unauthorized access'});
+});
+
 module.exports = router;
