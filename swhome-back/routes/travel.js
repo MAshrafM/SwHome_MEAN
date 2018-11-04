@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const { ObjectId } = require('mongodb');
 
 const Travel = require('../models/travel');
 const Home = require('../models/home');
@@ -21,7 +20,7 @@ router.post('/travel', (req, res, next) => {
       settingType
     } = req.body;
     
-    Home.find({owner: ObjectId(user)}, {owner: 1, _id: 0}).exec().then((result) => {
+    Home.find({owner: mongoose.Types.ObjectId(user)}, {owner: 1, _id: 0}).exec().then((result) => {
       userHome = result[0].owner;
       const travelRequest = new Travel({
         user,
