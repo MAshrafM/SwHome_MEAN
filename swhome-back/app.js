@@ -71,12 +71,16 @@ const authRouter = require('./routes/auth');
 const homeRouter = require('./routes/home');
 const reviewRouter = require('./routes/review');
 const travelRouter = require('./routes/travel');
+const matchRouter = require('./routes/match');
+const accountRouter = require('./routes/account');
 
 app.use('/', indexRouter);
 app.use('/api', authRouter);
 app.use('/api', homeRouter);
 app.use('/api', reviewRouter);
 app.use('/api', travelRouter);
+app.use('/api', matchRouter);
+app.use('/api', accountRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
