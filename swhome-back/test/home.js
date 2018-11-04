@@ -12,7 +12,7 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 const newUser = new User({
-  username: 'vvv',
+  username: 'nnn',
   password: '123456',
   firstName: 'm',
   lastName: 'ashraf',

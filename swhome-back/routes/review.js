@@ -16,10 +16,10 @@ router.post('/review', (req, res, next) => {
       rating,
       comment
     });
-    
+        
     homeReview.save().then(homeReview => {
-      res.josn({message: 'Review Added!'});
-    }).catch(err => next(err));
+      res.json({message: 'Review Added!'});
+    }).catch(err => {next(err);});
     
     return;
   }
@@ -31,8 +31,7 @@ router.post('/review', (req, res, next) => {
 router.put('/review/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const reviewId = req.params.id;
-    
-    if(!mongoos.Types.ObjectId.isValid(reviewId)){
+    if(!mongoose.Types.ObjectId.isValid(reviewId)){
       res.status(400).json({message: 'id not found'});
       return;
     }
@@ -41,10 +40,9 @@ router.put('/review/:id', (req, res, next) => {
       rating: req.body.rating,
       comment: req.body.comment
     };
-    
     Review.findOneAndUpdate(reviewId, reviewUpdate, {new: true}).then(review => {
-      res.josn({message: 'Review Updated!'});
-    }).catch(err => next(err));     
+      res.json({message: 'Review Updated!'});
+    }).catch(err => {next(err);});     
     
     return;
   }
@@ -57,13 +55,13 @@ router.delete('/review/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const reviewId = req.params.id;
     
-    if(!mongoos.Types.ObjectId.isValid(reviewId)){
+    if(!mongoose.Types.ObjectId.isValid(reviewId)){
       res.status(400).json({message: 'id not found'});
       return;
     }
     
     Review.deleteOne({_id: reviewId}).then(message => {
-      return res.josn({message: 'Review Deleted!'});
+      return res.json({message: 'Review Deleted!'});
     }).catch(err => next(err));
     
     return;
