@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+
 const Match = require('../models/match');
+const Travel = require('../models/travel');
 
 const router = express.Router();
 
@@ -9,7 +11,7 @@ router.get('/match', (req, res, next) => {
   if(req.isAuthenticated()){
     const user = req.user._id;
     
-    Match.find({userRequest1: user, userRequest2: user}).then((matches, err) => {
+    Match.find({$or:[{user1: user}, {user2: user}]}).then((matches, err) => {
       if(err){
         res.json(err);
         return;
@@ -29,15 +31,17 @@ router.post('/match/:id1/:id2', (req, res, next) => {
   if(req.isAuthenticated()){
     const userRequest1 = req.params.id1;
     const userRequest2 = req.params.id2;
-    
+    const user1 = req.user._id;
+    console.log(user1);
     const match = new Match({
+      user1,
       userRequest1,
       userRequest2
     });
-    
+    console.log(match);
     match.save().then(match => {
       res.json({message: 'Match Added'});
-    }).catch(err => next(err));
+    }).catch(err => {console.log("errrrrrrrrrrrrrrrrr");next(err)});
     
     return;
   }
