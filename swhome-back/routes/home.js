@@ -60,7 +60,7 @@ router.get('/myhome/:id', (req, res, next) => {
 router.post('/myhome', parser, (req, res, next) => {
   if(req.isAuthenticated()){
     const owner = req.user._id;
-    const { home, setting, landscape, description } = req.body;
+    const { home, setting, landscape, description, bedrooms, beds, baths } = req.body;
     const address = {
       street: req.body.address.street,
       city: req.body.address.city,
@@ -73,6 +73,9 @@ router.post('/myhome', parser, (req, res, next) => {
       home,
       setting,
       landscape,
+      bedrooms,
+      beds,
+      baths,
       address,
       description,
     });
@@ -101,6 +104,9 @@ router.put('/myhome/:id', (req, res, next) => {
       setting: req.body.setting, 
       landscape: req.body.landscape,
       address: req.body.address,
+      bedrooms: req.body.bedrooms,
+      beds: req.body.beds,
+      baths: req.body.baths,
       description: req.body.description
     }
     

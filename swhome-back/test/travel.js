@@ -24,6 +24,9 @@ const newHome = new Home({
   home: 'House',
   setting: 'Urban',
   landscape: 'Coastal',
+  bedrooms: 4,
+  beds: 7,
+  baths: 3,
   address: {
     street: 'hallow st',
     city: 'castle rock',
