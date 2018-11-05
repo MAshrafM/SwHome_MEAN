@@ -31,7 +31,6 @@ router.post('/travel', (req, res, next) => {
         locationType,
         settingType
       });
-      
       travelRequest.save().then(travelRequest => {
         res.json({message: 'Travel Added'});
       }).catch(err => next(err));
@@ -98,11 +97,10 @@ router.put('/like/:id', (req, res, next) => {
     const likeId = mongoose.Types.ObjectId(req.params.id);
     let travelId;
     
-    if(!mongoose.Types.ObjectId.isValid(likelId)){
+    if(!mongoose.Types.ObjectId.isValid(likeId)){
       res.status(400).json({message: 'id not found'});
       return;
     }
-    
     Travel.find({$and: [{user: mongoose.Types.ObjectId(req.user._id)}, {active: true}]}, {_id: 1}).exec().then((result) => {
       travelId = result[0]._id;
       Travel.updateOne({_id: travelId}, {$push: {homesLiked: likeId}}).then(() => {
@@ -122,7 +120,7 @@ router.put('/dislike/:id', (req, res, next) => {
     const dislikeId = mongoose.Types.ObjectId(req.params.id);
     let travelId;
     
-    if(!mongoose.Types.ObjectId.isValid(likelId)){
+    if(!mongoose.Types.ObjectId.isValid(dislikeId)){
       res.status(400).json({message: 'id not found'});
       return;
     }

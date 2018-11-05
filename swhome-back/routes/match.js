@@ -55,7 +55,7 @@ router.put('match/accept/:id', (req, res, next) => {
       return;
     }
     
-    Match.findOne({_id: matchId}).then(match = > {
+    Match.findOne({_id: matchId}).then(match => {
       if(!match.confirmed1){
         match.set({confirmed1: true});
         match.save(updatedMatch => {
@@ -85,7 +85,7 @@ router.put('match/decline/:id', (req, res, next) => {
       return;
     }
     
-    Match.findOne({_id: matchId}).then(match = > {
+    Match.findOne({_id: matchId}).then(match => {
       if(match.confirmed1){
         match.set({confirmed1: false});
         match.save(updatedMatch => {
