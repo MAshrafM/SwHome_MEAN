@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { FileUploadModule } from 'ng2-file-upload';
 
 // Services
 import { AuthRoutesService } from './services/auth-routes.service';
+import { HomeRoutesService } from './service/home-routes.service';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxPagesScrollModule } from 'ngx-page-scroll';
 // Components
 import { AppComponent } from './app.component';
 import { AddHomeComponent } from './add-home/add-home.component';
@@ -35,9 +38,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    FileUploadModule,
+    NgxPagesScrollModule,
   ],
-  providers: [AuthRoutesService],
+  providers: [AuthRoutesService, HomeRoutesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

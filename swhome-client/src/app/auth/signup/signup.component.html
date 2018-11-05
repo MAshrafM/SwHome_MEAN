@@ -1,4 +1,4 @@
-<form>
+<form id="sign_up">
   <h2> Signup </h2>
   <label> Username </label>
   <input type="text" [(ngModel)]="formInfo.username" name="username"/>
@@ -17,3 +17,5 @@
   <br>
   <button type="button" (click)="signup()"> Signup! </button>
 </form>
+
+<p>Already have an account? <a routerLink="/login">Log in</a>.</p>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { enviroment } from '../../enviroments/enviroment'
 
@@ -8,9 +9,11 @@ import { enviroment } from '../../enviroments/enviroment'
 })
 export class HomeRoutesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: Http) { }
   
   getMyHome(){
-    return this.http.get(`${enviroment.BASE_URL}/aoi/myhome`);
+    return this.http.get(`${enviroment.BASE_URL}/api/myhome`).pipe(
+      map((res) => res.json())
+    );
   }
 }
