@@ -15,9 +15,9 @@ router.post('/travel', (req, res, next) => {
     const {
       beginDate,
       endDate,
-      homeType,
-      locationType,
-      settingType
+      home,
+      setting,
+      landscape
     } = req.body;
     
     Home.find({owner: mongoose.Types.ObjectId(user)}, {owner: 1, _id: 0}).exec().then((result) => {
@@ -27,9 +27,9 @@ router.post('/travel', (req, res, next) => {
         userHome,
         beginDate,
         endDate,
-        homeType,
-        locationType,
-        settingType
+        home,
+        setting,
+        landscape
       });
       travelRequest.save().then(travelRequest => {
         res.json({message: 'Travel Added'});
@@ -56,9 +56,9 @@ router.put('/travel/:id', (req, res, next) => {
     const updateTravel = {
       beginDate : req.body.beginDate,
       endDate : req.body.endDate,
-      homeType : req.body.homeType,
-      locationType : req.body.locationType,
-      settingType : req.body.settingType
+      home : req.body.home,
+      setting : req.body.setting,
+      landscape : req.body.landscape
     };
     
     Travel.findOneAndUpdate(travelId, updateTravel, {new: true}).then(travel => {
@@ -92,7 +92,7 @@ router.delete('/travel/:id', (req, res, next) => {
 });
 
 // like plan
-router.put('/like/:id', (req, res, next) => {
+router.put('/travel/like/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const likeId = mongoose.Types.ObjectId(req.params.id);
     let travelId;
@@ -115,7 +115,7 @@ router.put('/like/:id', (req, res, next) => {
 });
 
 // dislike plan
-router.put('/dislike/:id', (req, res, next) => {
+router.put('/travel/dislike/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const dislikeId = mongoose.Types.ObjectId(req.params.id);
     let travelId;

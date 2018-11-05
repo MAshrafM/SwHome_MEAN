@@ -37,17 +37,17 @@ const newHome = new Home({
 const newTravel = new Travel({
   beginDate: new Date(),
   endDate: new Date(),
-  homeType: 'House',
-  locationType: 'Urban',
-  settingType: 'City'
+  home: 'House',
+  setting: 'Urban',
+  landscape: 'City'
 })
 
 const editTravel = {
   beginDate: new Date(),
   endDate: new Date(),
-  homeType: 'House',
-  locationType: 'Rural',
-  settingType: 'City'
+  home: 'House',
+  setting: 'Rural',
+  landscape: 'City'
 };
 
 var cookie;
@@ -108,7 +108,7 @@ describe('Test Travel Model and Route', () => {
   });
   
   it('it should like a travel plan', (done) => {
-    chai.request(app).put(`/api/like/${mongoose.Types.ObjectId()}`).set('cookie', cookie).end((err, res) => {
+    chai.request(app).put(`/api/travel/like/${mongoose.Types.ObjectId()}`).set('cookie', cookie).end((err, res) => {
       res.should.have.status(200);
       res.should.be.json;
       done();
@@ -116,7 +116,7 @@ describe('Test Travel Model and Route', () => {
   });
   
   it('it should not like a travel plan without auth', (done) => {
-    chai.request(app).put(`/api/like/${mongoose.Types.ObjectId()}`).end((err, res) => {
+    chai.request(app).put(`/api/travel/like/${mongoose.Types.ObjectId()}`).end((err, res) => {
       res.should.have.status(403);
       res.should.be.json;
       done();

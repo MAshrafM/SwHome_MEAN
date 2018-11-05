@@ -38,17 +38,17 @@ const newHome = new Home({
 const t1 = new Travel({
   beginDate: new Date(),
   endDate: new Date(),
-  homeType: 'House',
-  locationType: 'Urban',
-  settingType: 'City'
+  home: 'House',
+  setting: 'Urban',
+  landscape: 'City'
 })
 
 const t2 = new Travel({
   beginDate: new Date(),
   endDate: new Date(),
-  homeType: 'House',
-  locationType: 'Rural',
-  settingType: 'City'
+  home: 'House',
+  setting: 'Rural',
+  landscape: 'City'
 });
 
 var cookie;

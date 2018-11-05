@@ -97,9 +97,9 @@ router.put('/myhome/:id', (req, res, next) => {
     }
     
     const homeUpdate = {
-      homeType: req.body.homeType, 
-      locationType: req.body.locationType, 
-      settingType: req.body.settingType,
+      home: req.body.home, 
+      setting: req.body.setting, 
+      landscape: req.body.landscape,
       address: req.body.address,
       description: req.body.description
     }
