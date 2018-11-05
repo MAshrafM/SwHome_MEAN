@@ -31,17 +31,30 @@ router.post('/match/:id1/:id2', (req, res, next) => {
   if(req.isAuthenticated()){
     const userRequest1 = req.params.id1;
     const userRequest2 = req.params.id2;
-    const user1 = req.user._id;
-    console.log(user1);
+    const user = req.user._id;
     const match = new Match({
-      user1,
+      user1: user,
       userRequest1,
       userRequest2
     });
-    console.log(match);
-    match.save().then(match => {
-      res.json({message: 'Match Added'});
-    }).catch(err => {console.log("errrrrrrrrrrrrrrrrr");next(err)});
+    match.save().then(newMatch => {
+      let matchId = newMatch._id;
+      Match.findById(matchId, 'userRequest2')
+      .populate({
+        path: 'userRequest2', 
+        select: 'user -_id',
+        populate: {
+          path: 'user',
+          select: '_id'
+        }
+      }).then(match => {
+        let user2 = match.userRequest2.user._id;
+        match.set({user2 : user2});
+        match.save().then(updatedMatch => {
+          res.json({message: 'Match Added'});
+        }).catch(err => next(err));
+      }).catch(err => next(err));
+    }).catch(err => next(err));
     
     return;
   }
