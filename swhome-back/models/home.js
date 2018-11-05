@@ -2,10 +2,26 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const homeSchema = new Schema({
-  owner: {type: Schema.Types.ObjectId, ref: 'Users', required: true},
-  homeType: {type: String, required: true},
-  locationType: {type: String, required: true},
-  settingType: {type: String, required: true},
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'Users',
+    required: true
+  },
+  home: {
+    type: String,
+    enum: ['House', 'Apt', 'Both'],
+    required: true
+  },
+  setting: {
+    type: String,
+    enum: ['Urban', 'Suburban', 'Rural'],
+    required: true
+  },
+  landscape: {
+    type: String,
+    enum: ['Tropical', 'Mountainous', 'City', 'Coastal'],
+    required: true
+  },
   address: {
     street: {type: String, required: true},
     city: {type: String, required: true},

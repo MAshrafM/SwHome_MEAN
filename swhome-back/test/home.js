@@ -21,9 +21,9 @@ const newUser = new User({
 
 const newHome = new Home({
   owner: mongoose.Types.ObjectId(newUser._id),
-  homeType: 'villa',
-  locationType: 'coast',
-  settingType: 'bedrooms',
+  home: 'House',
+  setting: 'Urban',
+  landscape: 'Coastal',
   address: {
     street: 'hallow st',
     city: 'castle rock',
@@ -76,13 +76,13 @@ describe('Test Home Model and Routes', () => {
       res.should.be.json;
       res.body.should.be.a('object');
       res.body.should.have.property('owner');
-      res.body.should.have.property('homeType');
-      res.body.should.have.property('locationType');
-      res.body.should.have.property('settingType');
+      res.body.should.have.property('home');
+      res.body.should.have.property('setting');
+      res.body.should.have.property('landscape');
       res.body.should.have.property('address');
       res.body.should.have.property('description');
       res.body.should.have.property('images');
-      res.body.homeType.should.equal('villa');
+      res.body.home.should.equal('House');
       done();
     });
   });
@@ -96,7 +96,7 @@ describe('Test Home Model and Routes', () => {
   });
   
   it('it should update', (done) => {
-    chai.request(app).put(`/api/myhome/${newHome._id}`).set('cookie', cookie).send({'homeType': 'condo'}).end((err, res) => {
+    chai.request(app).put(`/api/myhome/${newHome._id}`).set('cookie', cookie).send({'home': 'Apt'}).end((err, res) => {
       res.should.have.status(200);
       res.should.be.json;
       res.body.should.be.a('object');
@@ -118,8 +118,8 @@ describe('Test Home Model and Routes', () => {
       res.should.have.status(200);
       res.should.be.json;
       res.body.should.be.a('object');
-      res.body.should.have.property('homeType');
-      res.body.homeType.should.equal('condo');
+      res.body.should.have.property('home');
+      res.body.home.should.equal('Apt');
       done();
     });
   });

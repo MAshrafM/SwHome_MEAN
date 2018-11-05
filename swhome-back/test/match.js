@@ -22,9 +22,9 @@ const newUser = new User({
 });
 
 const newHome = new Home({
-  homeType: 'villa',
-  locationType: 'coast',
-  settingType: 'bedrooms',
+  home: 'House',
+  setting: 'Urban',
+  landscape: 'Coastal',
   address: {
     street: 'hallow st',
     city: 'castle rock',
