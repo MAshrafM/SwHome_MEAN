@@ -6,6 +6,50 @@ const Home = require('../models/home');
 
 const router = express.Router();
 
+// get travel plans
+router.get('/travel', (req, res, next) => {
+  if(req.isAuthenticated()){
+    const user = req.user._id;
+    
+    Travel.find({user: mongoose.Types.ObjectId(user)}).then((travels) => {
+      return res.json(travels);
+    }).catch(err => console.log(err));
+    return;
+  }
+  
+  res.status(403).json({message: 'Unauthorized access'});
+});
+
+// get travel requests of users
+router.get('/travel/:id/results', (req, res, next) => {
+  if(req.isAuthenticated()){
+    const travelId = req.params.id;
+    
+    Travel.findOne({_id: mongoose.Types.ObjectId(travelId)}).then((results) => {
+      if(results){
+        const {
+          beginDate,
+          endDate,
+          home,
+          setting,
+          landscape
+        } = results;
+        
+        Home.find({home: home, setting: setting, landscape: landscape}, {_id: 1}).then((homeIds) => {
+          Travel.find({beginDate, endDate, _id: {$ne: mongoose.Types.ObjectId(travelId)}, userHome: {$in: homeIds}}).populate('userHome').then((travelPlans) => {
+            return res.json(travelPlans);
+          }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+      } else {
+        return res.json({message: 'No Travel Plans Found!'});
+      }
+    }).catch(err => console.log(err));
+    return;
+  }
+  
+  res.status(403).json({message: 'Unauthorized access'});
+});
+
 // create travel event
 router.post('/travel', (req, res, next) => {
   if(req.isAuthenticated()){
@@ -20,8 +64,8 @@ router.post('/travel', (req, res, next) => {
       landscape
     } = req.body;
     
-    Home.find({owner: mongoose.Types.ObjectId(user)}, {owner: 1, _id: 0}).exec().then((result) => {
-      userHome = result[0].owner;
+    Home.find({owner: mongoose.Types.ObjectId(user)}, {_id: 1}).exec().then((result) => {
+      userHome = result[0]._id;
       const travelRequest = new Travel({
         user,
         userHome,
