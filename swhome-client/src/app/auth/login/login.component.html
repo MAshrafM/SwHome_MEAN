@@ -1,3 +1,17 @@
-<p>
-  login works!
-</p>
+<form>
+  <h2>Login</h2>
+  <label>Username</label>
+  <input type="text" [(ngModule)]="formInfo.username" name="username" />
+  <br>
+  <label>Password</label>
+  <input type="text" [(ngModule)]="formInfo.password" name="password" />
+  <br>
+  <button type="button" (click)="login()"> Login! </button>
+</form>
+
+<div *ngIf="user">
+  <h2> You are now logged in as {{ user.username }} {{user._id}} </h2>
+  <button (click)="logout()"> logout </button>
+</div>
+
+<p class="error">{{error}}</p>
