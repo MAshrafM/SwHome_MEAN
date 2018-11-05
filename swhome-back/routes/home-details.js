@@ -13,7 +13,19 @@ router.get('/home-details/:id', (req, res, next) => {
       return;
     }
     
-    Home.findById(homeId, {_id: 0, createdAt: 0, updatedAt: 0}).then((home, err) => {
+    Home.findById(homeId, '-address.street -_id -createdAt -updatedAt -__v')
+    .populate({
+      path: 'owner',
+      select: 'firstName avatarUrl createdAt -_id'
+    })
+    .populate({
+      path: 'reviews',
+      select: '-_id -createdAt -__v -home',
+      populate:{
+        path: 'user',
+        select: 'firstName avatarUrl createdAt -_id'
+      }
+    }).then((home, err) => {
       if(err){
         res.json(err);
         return;
