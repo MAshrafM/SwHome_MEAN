@@ -25,7 +25,7 @@ router.get('/match', (req, res, next) => {
 });
 
 // create a match
-router.post('match/:id1/:id2', (req, res, next) => {
+router.post('/match/:id1/:id2', (req, res, next) => {
   if(req.isAuthenticated()){
     const userRequest1 = req.params.id1;
     const userRequest2 = req.params.id2;
@@ -46,7 +46,7 @@ router.post('match/:id1/:id2', (req, res, next) => {
 });
 
 // accept a match
-router.put('match/accept/:id', (req, res, next) => {
+router.put('/match/accept/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const matchId = req.params.id;
     
@@ -76,7 +76,7 @@ router.put('match/accept/:id', (req, res, next) => {
 });
 
 // decline a match
-router.put('match/decline/:id', (req, res, next) => {
+router.put('/match/decline/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const matchId = req.params.id;
     

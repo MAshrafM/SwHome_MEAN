@@ -37,7 +37,6 @@ router.get('/myhome', (req, res, next) => {
 router.get('/myhome/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const homeId = req.params.id;
-    console.log(homeId);
     if(!mongoose.Types.ObjectId.isValid(homeId)){
       res.status(400).json({message: 'id not found'});
       return;
@@ -45,13 +44,11 @@ router.get('/myhome/:id', (req, res, next) => {
     
     Home.findById(homeId).then((userHome, err) => {
       if(err){
-        console.log('EEEEEEEEEERRRRRRRRRROR');
         res.json(err);
         return;
       }
-      console.log(userHome);
       res.json(userHome);
-    }).catch(error => {console.log("errrrororororor");next(error);});
+    }).catch(error => next(error));
     
     return;
   }
