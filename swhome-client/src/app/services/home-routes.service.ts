@@ -12,7 +12,7 @@ export class HomeRoutesService {
   constructor(private http: Http) { }
   
   getMyHome(){
-    return this.http.get(`${environment.BASE_URL}/api/myhome`).pipe(
+    return this.http.get(`${environment.BASE_URL}/api/myhome`, {withCredentials: true}).pipe(
       map((res) => res.json())
     );
   }

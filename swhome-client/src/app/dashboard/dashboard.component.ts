@@ -10,8 +10,9 @@ import { TravelRoutesService } from '../services/travel-routes.service';
   providers: [HomeRoutesService, TravelRoutesService]
 })
 export class DashboardComponent implements OnInit {
-  homes: any= []
-  travels: any;
+  homes:any=[]
+  travels:any=[];
+  
   constructor(private home: HomeRoutesService, private travel: TravelRoutesService) { }
 
   ngOnInit() {

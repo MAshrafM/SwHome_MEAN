@@ -1,18 +1,20 @@
 <h3>My Home</h3>
-<div class="main__container">
+<div class="main-container">
   <div *ngFor="let home of homes">
+    <img [src]="home.images[0].url" />
     <p>{{home.address.street}}</p>
     <p>{{home.address.city}}</p>
     <p>{{home.address.zipCode}}</p>
     <a [routerLink]="['home']">View Details</a>
     <a [routerLink]="['edit-home', home._id]">Edit</a>
   </div>
-  <button><a [routerLink]="['add-home']">Add Home</a></button>
+  <a routerLink="/add-home">Add Home</a>
 </div>
 
 <h3>My Travels</h3>
-{{travels}}
-<div *ngFor="let travel of travels">
-  <p>{{travel.beginDate}}</p>
-  <p>{{travel.endDate}}</p>
+<div class="travel-container">
+  <div *ngFor="let travel of travels">
+    <p>Start Date: {{travel.beginDate}}  End Date: {{travel.endDate}}</p>
+    <a routerLink="/add-travel">Add Travel</a>
+  </div>
 </div>
