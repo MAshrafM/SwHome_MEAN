@@ -12,7 +12,7 @@ const storage = cloudinaryStorage({
   transformation: [{ width: 500, height: 500, crop: "limit" }]
 })
 
-const parser = multer({storage: storage}).array('homePhotos', 10);
+const parser = multer({storage: storage}).array('file', 10);
 
 const router = express.Router();
 
@@ -61,13 +61,25 @@ router.post('/myhome', parser, (req, res, next) => {
   if(req.isAuthenticated()){
     const owner = req.user._id;
     const { home, setting, landscape, description, bedrooms, beds, baths } = req.body;
+    const parsedAddress = JSON.parse(req.body.address);
+    const file = req.files;
+    let images = [];
+    for(let i = 0; i < file.length; i++){
+      let img = {
+        url: file[i].url,
+        id: file[i].id
+      };
+      images.push(img);
+    }
+    
     const address = {
-      street: req.body.address.street,
-      city: req.body.address.city,
-      state: req.body.address.state,
-      zipCode: req.body.address.zipCode,
-      country: req.body.address.country
+      street: parsedAddress.street,
+      city: parsedAddress.city,
+      state: parsedAddress.state,
+      zipCode: parsedAddress.zipCode,
+      country: parsedAddress.country
     }; 
+    
     const userHome = new Home({
       owner,
       home,
@@ -78,6 +90,7 @@ router.post('/myhome', parser, (req, res, next) => {
       baths,
       address,
       description,
+      images
     });
     
     userHome.save().then(userHome => {

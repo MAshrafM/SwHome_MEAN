@@ -23,15 +23,15 @@ const homeSchema = new Schema({
     required: true
   },
   bedrooms: {
-    type: Number,
+    type: String,
     required: true
   },
   beds: {
-    type: Number,
+    type: String,
     required: true
   },
   baths: {
-    type: Number,
+    type: String,
     required: true
   },
   address: {
