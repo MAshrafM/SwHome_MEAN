@@ -95,4 +95,13 @@ router.get('/private', (req, res, next) => {
   res.status(403).json({message: 'Unauthorized access'});
 });
 
+router.get('/loggedin', (req, res, next) => {
+  if(res.isAuthenticated()){
+    res.status(200).json(req.user);
+    return;
+  }
+  
+  res.status(403).json({message: 'Unauthorized access'});
+});
+
 module.exports = router;

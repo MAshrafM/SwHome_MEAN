@@ -6,9 +6,9 @@ import { FileUploadModule } from 'ng2-file-upload';
 
 // Services
 import { AuthRoutesService } from './services/auth-routes.service';
-import { HomeRoutesService } from './service/home-routes.service';
-import { AppRoutingModule } from './app-routing.module';
-import { NgxPagesScrollModule } from 'ngx-page-scroll';
+import { HomeRoutesService } from './services/home-routes.service';
+import { AppRoutingModule } from './/app-routing.module';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
 // Components
 import { AppComponent } from './app.component';
 import { AddHomeComponent } from './add-home/add-home.component';
@@ -20,6 +20,7 @@ import { EditTravelComponent } from './edit-travel/edit-travel.component';
 import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { EditHomeComponent } from './edit-home/edit-home.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     EditTravelComponent,
     ResultsComponent,
     MatchesComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    EditHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     AppRoutingModule,
     FormsModule,
     FileUploadModule,
-    NgxPagesScrollModule,
+    NgxPageScrollModule,
   ],
   providers: [AuthRoutesService, HomeRoutesService],
   bootstrap: [AppComponent]

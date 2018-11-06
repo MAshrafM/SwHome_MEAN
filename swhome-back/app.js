@@ -10,6 +10,7 @@ const logger = require('morgan');
 const passport = require('passport');
 const passportSetup = require('./config/passport');
 const session = require('express-session');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const cloudinary = require('cloudinary');
 
@@ -64,6 +65,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// cors config
+const originsWhiteList = [
+  'http://localhost:4200'
+];
+
+const corsOptions = {
+  origin: function(origin, callback){
+    const isWhiteListed = originsWhiteList.indexOf(origin) !== -1;
+    callback(null, isWhiteListed);
+  },
+  credentials: true
+}
+
+app.use(cors(corsOptions));
 
 // Routes
 const indexRouter = require('./routes/index');

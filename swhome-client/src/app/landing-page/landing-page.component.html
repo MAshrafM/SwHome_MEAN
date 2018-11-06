@@ -1,3 +1,61 @@
-<p>
-  landing-page works!
-</p>
+<!-- Main Intro Section -->
+<div class="main-intro">
+  <div class="main-intro__nav main-intro__nav--padding">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <h2 class="main-intro__nav--logo">TRAV</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" pageScroll href="#sign_up"><p class="main_intro_link">Signup</p></a>
+          <a class="nav-item nav-link active" routerLink="/login"><p class="main-intro__nav--link">Login</p></a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="main-intro__text">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1 class="main-intro__text--slogan">Seek Adventure. Stay for <span class="main-intro__text--bold">Free.</span></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="main-intro__footer">
+    <footer class="d-flex align-items-end">
+      <div class="col align-self-end">
+        <a pageScroll href="#main_middle_section"><img src="/src/assets/images/arrow.png" alt="down-arrow-image"class="scroll_arrow_border"></a>
+      </div>
+    </footer>
+  </div>
+</div><!-- End Main Intro Section -->
+
+ <!-- Middle Section -->
+<div id="main_middle_section" class="main_middle">
+  <div class="container marketing align-items-center">
+    <div class="row">
+      <div class="col-4">
+        <img class="rounded-circle" src="/src/assets/images/mainAddHomeImage.jpg" alt="add-home-image" width="150" height="145">
+        <h2> Home</h2>
+        <p>Add your home to your account showcasing details and images. Don't forget to provide a description! </p>
+      </div>
+      <div class="col-4">
+        <img class="rounded-circle" src="/src/assets/images/mainAddHouseImage.svg" alt="add-home-image" width="150" height="150">
+        <h2>Travel Request</h2>
+        <p>Create a request with the dates you want to travel, and we'll take care of finding you homes that are available.</p>
+      </div>
+      <div class="col-4">
+        <img class="rounded-circle" src="/src/assets/images/mainAddHouseImage.svg" alt="add-home-image" width="140" height="140">
+        <h2>Matches</h2>
+        <p>Review your matching travel requests and as soon as you connect with another traveler you'll be one step closer to your adventure.</p>
+      </div>
+    </div>
+  </div>
+</div><!-- End Middle Section -->
+
+<!-- Sign up Section -->
+<app-signup></app-signup>
+<!-- End Signup Section -->

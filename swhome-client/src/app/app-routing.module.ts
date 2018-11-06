@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 // Components
-import { LandingPageComponent } './landing-page/landing-page.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -16,7 +16,7 @@ import { MatchesComponent } from './matches/matches.component';
 
 // routes
 const routes: Routes = [
-  { path: '', component: LandingPageComponent, pathMatch: 'full'}
+  { path: '', component: LandingPageComponent, pathMatch: 'full'},
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -30,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  exports: [RouterModule]
+  exports: [RouterModule],
   imports: [RouterModule.forRoot(routes)],
   declarations: []
 })
