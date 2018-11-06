@@ -107,10 +107,20 @@ router.post('/myhome', parser, (req, res, next) => {
 router.put('/myhome/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const homeId = req.params.id;
+    const parsedAddress = JSON.parse(req.body.address);
+    
     if(!mongoose.Types.ObjectId.isValid(homeId)) {
       res.status(400).json({ message: 'id not found' });
       return;
     }
+    
+    const addressUpdate = {
+      street: parsedAddress.street,
+      city: parsedAddress.city,
+      state: parsedAddress.state,
+      zipCode: parsedAddress.zipCode,
+      country: parsedAddress.country
+    };
     
     const homeUpdate = {
       home: req.body.home, 

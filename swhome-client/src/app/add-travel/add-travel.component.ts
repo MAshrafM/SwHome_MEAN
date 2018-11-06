@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TravelRoutesService } from '../services/travel-routes.service';
 
 @Component({
   selector: 'app-add-travel',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-travel.component.scss']
 })
 export class AddTravelComponent implements OnInit {
+  formInfo: any = {
+    beginDate: Date,
+    endDate: Date,
+    home: '',
+    setting: '',
+    landscape: ''
+  };
+  
+  constructor(private travel: TravelRoutesService) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit() {}
+  
+  addTravel(){
+    this.travel.addTravel(this.formInfo).subscribe();
   }
 
 }
