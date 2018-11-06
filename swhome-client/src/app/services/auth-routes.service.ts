@@ -24,7 +24,7 @@ export class AuthRoutesService {
   }
   
   login(user){
-    return this.http.get(`${this.mainURL}/login`, user, {withCredentials: true}).pipe(
+    return this.http.post(`${this.mainURL}/login`, user, {withCredentials: true}).pipe(
       map(res => res.json()),
       catchError(this.handleError)
     );

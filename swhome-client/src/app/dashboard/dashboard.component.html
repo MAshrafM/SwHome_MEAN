@@ -1,6 +1,6 @@
 <h3>My Home</h3>
 <div class="main__container">
-  <div *ngFor="let home for homes">
+  <div *ngFor="let home of homes">
     <p>{{home.address.street}}</p>
     <p>{{home.address.city}}</p>
     <p>{{home.address.zipCode}}</p>

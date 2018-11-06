@@ -12,15 +12,15 @@ import { TravelRoutesService } from '../services/travel-routes.service';
 export class DashboardComponent implements OnInit {
   homes: any= []
   travels: any;
-  constructor(private home: HomeRoutesService) { }
+  constructor(private home: HomeRoutesService, private travel: TravelRoutesService) { }
 
   ngOnInit() {
     this.home.getMyHome().subscribe((homes) => {
       this.homes = homes;
-    })
+    });
     
     this.travel.getTravel().subscribe((travels) => {
-      this.travels = travels
+      this.travels = travels;
     });
   }
 }

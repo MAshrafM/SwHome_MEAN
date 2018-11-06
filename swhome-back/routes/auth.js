@@ -96,7 +96,7 @@ router.get('/private', (req, res, next) => {
 });
 
 router.get('/loggedin', (req, res, next) => {
-  if(res.isAuthenticated()){
+  if(req.isAuthenticated()){
     res.status(200).json(req.user);
     return;
   }
