@@ -14,7 +14,12 @@
 <h3>My Travels</h3>
 <div class="travel-container">
   <div *ngFor="let travel of travels">
-    <p>Start Date: {{travel.beginDate}}  End Date: {{travel.endDate}}</p>
-    <a routerLink="/add-travel">Add Travel</a>
+    <p>Start Date: {{travel.beginDate.substr(0, 10)}}  End Date: {{travel.endDate.substr(0, 10)}}
+      <a [routerLink]="['../edit-travel', travel._id]">Edit</a>
+      <a [routerLink]="['../results', travel._id]">Results</a>
+      <button (click)="deleteTravel(travel._id)">Delete</button>
+    </p>
+    <a [routerLink]="['../add-travel']">Add Travel</a>
   </div>
 </div>
+

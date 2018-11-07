@@ -24,7 +24,23 @@ export class TravelRoutesService {
   
   getTravel(){
     return this.http.get(`${this.mainURL}/travel`, {withCredentials: true}).pipe(
-      map(res => res.json()), catchError(this.handleError)
-    );
+      map((res:any) => {return res.json()}));
   }
+  
+  travelDetail(travelId){
+    return this.http.get(`${this.mainURL}/travel/${travelId}`, {withCredentials: true}).pipe(
+      map((res) => return res.json()));
+  }
+  
+  editTravel(editedTravel, travelId){
+    return this.http.put(`${this.mainURL}/travel/${travelId}`, editedTravel, {withCredentials: true}).pipe(
+      map((res) => return res.json()));
+  }
+  
+  deleteTravel(travelId){
+    return this.http.delete(`${this.mainURL}/travel/${travelId}`, {withCredentials: true}).pipe(
+      map((res) => return res.json()));
+  }
+  
+  
 }

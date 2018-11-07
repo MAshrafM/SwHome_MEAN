@@ -1,3 +1,19 @@
-<p>
-  edit-travel works!
-</p>
+<form>
+  <h2> Edit Travel </h2>
+  <label> Start Date </label>
+  <input type="date" [(ngModel)]="formInfo.beginDate" name="beginDate"/>
+  <br>
+  <label> End Date </label>
+  <input type="date" [(ngModel)]="formInfo.endDate" name="endDate"/>
+  <br>
+  <label> Home Type </label>
+  <input type="text" [(ngModel)]="formInfo.home" name="home"/>
+  <br>
+  <label> Setting </label>
+  <input type="text" [(ngModel)]="formInfo.setting" name="setting"/>
+  <br>
+  <label> Landscape </label>
+  <input type="text" [(ngModel)]="formInfo.landscape" name="landscape"/>
+  <br>
+  <button type="button" (click)="editTravel()"> Edit Travel </button>
+</form>

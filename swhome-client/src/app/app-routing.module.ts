@@ -21,10 +21,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'add-home', component: AddHomeComponent },
-  { path: 'edit-home', component: EditHomeComponent },
+  { path: 'edit-home/:id', component: EditHomeComponent },
   { path: 'add-travel', component: AddTravelComponent },
-  { path: 'edit-travel', component: EditTravelComponent },
-  { path: 'results', component: ResultsComponent },
+  { path: 'edit-travel/:id', component: EditTravelComponent },
+  { path: 'results/:id', component: ResultsComponent },
   { path: 'matches', component: MatchesComponent },
   { path: '**', redirectTo: ''}
 ];
