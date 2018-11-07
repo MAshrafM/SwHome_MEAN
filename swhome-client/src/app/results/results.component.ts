@@ -14,7 +14,7 @@ export class ResultsComponent implements OnInit {
   
   travelId: any = {};
   userTravelReq: any;
-  match: boolean;
+  matched: boolean;
   
   constructor(private route: ActivatedRoute, private travel: TravelRoutesService, private match: MatchRoutesService) { }
 
@@ -56,7 +56,7 @@ export class ResultsComponent implements OnInit {
   
   checkMatch(likeId){
     this.travel.checkMatch(this.travelId.id, likeId).subscribe((match) => {
-      this.match = match;
+      this.matched = match;
       if(match == true){
         this.createMatch(this.travelId.id, likeId);
       }

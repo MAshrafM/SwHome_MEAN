@@ -1,0 +1,24 @@
+.signup-form{
+  input, button, p{
+    margin-top: 1em;
+  }
+  
+  h2{
+    margin-top: 1.3em;
+  }
+  
+  p{
+    padding-bottom: 1em;
+  }
+  
+  button{
+    background-color: #006392;
+    color: #fff;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

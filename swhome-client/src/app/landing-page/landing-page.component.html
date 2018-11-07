@@ -1,61 +1,109 @@
 <!-- Main Intro Section -->
 <div class="main-intro">
-  <div class="main-intro__nav main-intro__nav--padding">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <h2 class="main-intro__nav--logo">TRAV</h2>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" pageScroll href="#sign_up"><p class="main_intro_link">Signup</p></a>
-          <a class="nav-item nav-link active" routerLink="/login"><p class="main-intro__nav--link">Login</p></a>
-        </div>
+  <header class="main-intro__nav pure-g">
+    <div class="pure-u-4-24 pure-u-md-4-24 pure-u-lg-4-24 pure-u-xl-4-24 center_items layout_items">
+      <h1 class="main-intro__nav--logo">TRAV</h1>
+    </div>
+    
+    <div class="pure-u-15-24 pure-u-md-15-24 pure-u-lg-15-24 pure-u-xl-15-24"></div>
+    
+    <div class="pure-u-4-24 pure-u-md-4-24 pure-u-lg-4-24 pure-u-xl-4-24 center_items layout_items">
+      <div class="pure-u-1-2 pure-u-lg-1-2 pure-u-xl-1-2">
+        <a class="main-intro__nav--link" pageScroll pageScrollSpeed=850 href="#signup-section">Sign up</a>
       </div>
-    </nav>
-  </div>
-  <div class="main-intro__text">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h1 class="main-intro__text--slogan">Seek Adventure. Stay for <span class="main-intro__text--bold">Free.</span></h1>
-        </div>
+      <div class="pure-u-1-2 pure-u-lg-1-2 pure-u-xl-1-2">
+        <a routerLink="/login" class="main-intro__nav--link">Log in</a>
       </div>
     </div>
-  </div>
+    
+    <div class="pure-u-1-24 pure-u-md-1-24 pure-u-lg-1-24 pure-u-xl-1-24"></div>
+  </header>
   
-  <div class="main-intro__footer">
-    <footer class="d-flex align-items-end">
-      <div class="col align-self-end">
+  <section class="main-intro__text">
+    <div class="pure-g center_items">
+      <div class="pure-u-1">
+        <h1 class="main-intro__text--slogan">Seek Adventure. Stay for <span class="main-intro__text--bold">Free.</span></h1>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="main-intro__footer">
+    <div class="pure-g center_items">
+      <div class="pure-u-1">
         <a pageScroll href="#main_middle_section"><img src="/src/assets/images/arrow.png" alt="down-arrow-image"class="scroll_arrow_border"></a>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 </div><!-- End Main Intro Section -->
 
  <!-- Middle Section -->
 <div id="main_middle_section" class="main-middle">
-  <div class="container marketing align-items-center">
-    <div class="row">
-      <div class="col-4">
-        <img class="rounded-circle" src="/src/assets/images/mainAddHomeImage.jpg" alt="add-home-image" width="150" height="145">
-        <h2> Home</h2>
-        <p>Add your home to your account showcasing details and images. Don't forget to provide a description! </p>
+  <div class="pure-g">
+    <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24"></div>
+    
+    <div class="pure-u-18-24 pure-u-lg-18-24 pure-u-xl-18-24 main_middle__pane">
+      <div class="pure-g">
+        <div class="pure-u-1-2 pure-u-lg-1-2 pure-u-xl-1-2 main_middle__pane--left">
+          <div class="pure-g">
+            <div class="pure-u-1">
+              <h2>How to get your TRAVel on!</h2>
+            </div>
+          </div>
+          <div class="pure-g info-graphic">
+            <div class="pure-u-2-8 pure-u-lg-2-8 pure-u-xl-2-8 center_items">
+              <img class="info-graphic__avatar" src="/src/assets/images/mainAddHouseImage.svg" alt="home_image">
+            </div>
+            <div class="pure-u-5-8 pure-u-lg-5-8 pure-u-xl-5-8 info-graphic__text">
+              <h4>My Home</h4>
+              <p>Add your home to your account in order to create a TRAVel Request.</p>
+            </div>
+            <div class="pure-u-1-8 pure-u-lg-1-8 pure-u-xl-1-8"></div>
+          </div>
+          
+          <div class="pure-g info-graphic">
+            <div class="pure-u-2-8 pure-u-lg-2-8 pure-u-xl-2-8 center_items">
+              <img class="info-graphic__avatar" src="/src/assets/images/mainAddHouseImage.svg" alt="home_image">
+            </div>
+            <div class="pure-u-5-8 pure-u-lg-5-8 pure-u-xl-5-8 info-graphic__text">
+              <h4>TRAVel Requests</h4>
+              <p>Create a Request with your preferred criteria.</p>
+            </div>
+            <div class="pure-u-1-8 pure-u-lg-1-8 pure-u-xl-1-8"></div>
+          </div>
+          
+          <div class="pure-g info-graphic">
+            <div class="pure-u-2-8 pure-u-lg-2-8 pure-u-xl-2-8 center_items">
+              <img class="info-graphic__avatar" src="/src/assets/images/mainAddHouseImage.svg" alt="home_image">
+            </div>
+            <div class="pure-u-5-8 pure-u-lg-5-8 pure-u-xl-5-8 info-graphic__text">
+              <h4>Matches</h4>
+              <p>Review your matches and like the homes you want to swap with.</p>
+            </div>
+            <div class="pure-u-1-8 pure-u-lg-1-8 pure-u-xl-1-8"></div>
+          </div>
+          
+          <div class="pure-g info-graphic">
+            <div class="pure-u-2-8 pure-u-lg-2-8 pure-u-xl-2-8 center_items">
+              <img class="info-graphic__avatar" src="/src/assets/images/mainAddHouseImage.svg" alt="home_image">
+            </div>
+             <div class="pure-u-5-8 pure-u-lg-5-8 pure-u-xl-5-8 info-graphic__text">
+              <h4>Connections</h4>
+              <p>Accept your connections and get prepared to travel!</p>
+            </div>
+             <div class="pure-u-1-8 pure-u-lg-1-8 pure-u-xl-1-8"></div>
+          </div> 
+        </div>
+        <div class="main_middle__pane--right pure-u-1-2 pure-u-lg-1-2 pure-u-xl-1-2">
+          <div class="pure-g">
+            <div class="pure-u-1">
+              <!-- Sign up Section -->
+              <app-signup></app-signup>
+              <!-- End Signup Section -->
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-4">
-        <img class="rounded-circle" src="/src/assets/images/mainAddHouseImage.svg" alt="add-home-image" width="150" height="150">
-        <h2>Travel Request</h2>
-        <p>Create a request with the dates you want to travel, and we'll take care of finding you homes that are available.</p>
-      </div>
-      <div class="col-4">
-        <img class="rounded-circle" src="/src/assets/images/mainAddHouseImage.svg" alt="add-home-image" width="140" height="140">
-        <h2>Matches</h2>
-        <p>Review your matching travel requests and as soon as you connect with another traveler you'll be one step closer to your adventure.</p>
-      </div>
+      <div class="pure-u-lg-3-24 pure-u-xl-3-24"></div>
     </div>
   </div>
 </div><!-- End Middle Section -->
-
-<!-- Sign up Section -->
-<app-signup></app-signup>
-<!-- End Signup Section -->
