@@ -42,5 +42,18 @@ export class TravelRoutesService {
       map((res) => return res.json()));
   }
   
+  getResults(travelId){
+    return this.http.get(`${this.mainURL}/travel/results/${travelId}`, {withCredentials: true}).pipe(
+      map((res) => return res.json()));
+  }
   
+  like(userTravelId, otherTravelId){
+    return this.http.put(`${this.mainURL}/travel/like/${otherTravelId}`, userTravelId, {withCredentials: true}).pipe(
+      map((res) => return res.json()));
+  }
+  
+  dislike(userTravelId, otherTravelId){
+    return this.http.put(`${this.mainURL}/travel/dislike/${otherTravelId}`, userTravelId, {withCredentials: true}).pipe(
+      map((res) => return res.json()));
+  }
 }

@@ -1,3 +1,8 @@
-<p>
-  results works!
-</p>
+<h3>My Results</h3>
+<div class="results-container">
+<div class="results-card" *ngFor="let result of results">
+    <p>Travel ID: {{result._id}}</p>
+    <button (click)="like(result._id)"> Like </button>
+    <button (click)="dislike(result._id)"> Dislike </button>
+  </div>
+</div>
