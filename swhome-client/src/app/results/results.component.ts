@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TravelRoutesService } from '../services/travel-routes.service';
+import { MatchRoutesService } from '../services/match-routes.service';
 
 @Component({
   selector: 'app-results',
@@ -15,7 +16,7 @@ export class ResultsComponent implements OnInit {
   userTravelReq: any;
   match: boolean;
   
-  constructor(private route: ActivatedRoute, private travel: TravelRoutesService) { }
+  constructor(private route: ActivatedRoute, private travel: TravelRoutesService, private match: MatchRoutesService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -37,7 +38,7 @@ export class ResultsComponent implements OnInit {
 
   like(otherTravelId){
     this.travel.like(this.travelId, otherTravelId).subscribe(() => {
-
+      this.checkMatch(otherTravelId);
       this.travel.getResults(this.travelId.id).subscribe((results) => {
         this.results = results;
         this.getDetails();
@@ -51,5 +52,18 @@ export class ResultsComponent implements OnInit {
         this.results = results;
       });
     });
+  }
+  
+  checkMatch(likeId){
+    this.travel.checkMatch(this.travelId.id, likeId).subscribe((match) => {
+      this.match = match;
+      if(match == true){
+        this.createMatch(this.travelId.id, likeId);
+      }
+    });
+  }
+  
+  createMatch(userReq, otherUserReq){
+    this.match.addMatch(userReq, otherUserReq, "match").subscribe();
   }
 }

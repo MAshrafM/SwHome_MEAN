@@ -56,4 +56,9 @@ export class TravelRoutesService {
     return this.http.put(`${this.mainURL}/travel/dislike/${otherTravelId}`, userTravelId, {withCredentials: true}).pipe(
       map((res) => return res.json()));
   }
+  
+  checkMatch(travelId, likeId){
+    return this.http.get(`${this.mainURL}/travel/${travelId}/matchcheck/${likeId}`, {withCredentials: true}).pipe(
+      map((res) => return res.json()));
+  }
 }
