@@ -80,21 +80,39 @@ router.post('/myhome', parser, (req, res, next) => {
       country: parsedAddress.country
     }; 
     
-    const userHome = new Home({
-      owner,
-      home,
-      setting,
-      landscape,
-      bedrooms,
-      beds,
-      baths,
-      address,
-      description,
-      images
-    });
-    
-    userHome.save().then(userHome => {
-      res.json({message: 'New Home Added!'});
+    Home.find({$and:[{'address.street': address.street}, {'address.zipCode': address.zipCode}]}).then((userHomes, err) => {
+      if(err){
+        res.json(err);
+        return;
+      }
+      
+      if(userHomes.length){
+        const homeId = userHomes[0]._id;
+        userHomes[0].images.push(images[0]);
+        Home.findByIdAndUpdate(homeId, userHomes[0], {new: true}).then((home) => {
+          return res.json({message: 'Home Updated'});
+        }).catch(error => next(error));
+        return;
+      } else {
+        const userHome = new Home({
+          owner,
+          home,
+          setting,
+          landscape,
+          bedrooms,
+          beds,
+          baths,
+          address,
+          description,
+          images
+        });
+        
+        userHome.save().then(userHome => {
+          res.json({message: 'New Home Added!'});
+        }).catch(error => next(error));
+        
+        return
+      }
     }).catch(error => next(error));
     
     return;
