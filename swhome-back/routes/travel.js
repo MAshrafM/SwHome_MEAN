@@ -20,23 +20,44 @@ router.get('/travel', (req, res, next) => {
   res.status(403).json({message: 'Unauthorized access'});
 });
 
-// get travel requests of users
-router.get('/travel/:id/results', (req, res, next) => {
+// get travel plan
+router.get('/travel/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const travelId = req.params.id;
     
-    Travel.findOne({_id: mongoose.Types.ObjectId(travelId)}).then((results) => {
+    if(!mongoose.Types.ObjectId.isValid(travelId)){
+      res.status(400).json({message: 'id not found'});
+      return;
+    }
+    
+    Travel.findById(travelId).then((travel) => {
+      return res.json(travel);
+    }).catch(err => console.log(err));
+    return;
+  }
+  
+  res.status(403).json({message: 'Unauthorized access'});
+});
+
+// get travel requests of users
+router.get('/travel/results/:id', (req, res, next) => {
+  if(req.isAuthenticated()){
+    const travelId = mongoose.Types.ObjectId(req.params.id);
+    
+    Travel.findOne({_id: travelId}).then((results) => {
       if(results){
         const {
           beginDate,
           endDate,
           home,
           setting,
-          landscape
+          landscape,
+          homesLiked,
+          homesDisliked
         } = results;
         
         Home.find({home: home, setting: setting, landscape: landscape}, {_id: 1}).then((homeIds) => {
-          Travel.find({beginDate, endDate, _id: {$ne: mongoose.Types.ObjectId(travelId)}, userHome: {$in: homeIds}}).populate('userHome').then((travelPlans) => {
+          Travel.find({beginDate, endDate, $and: [{_id: {$ne: travelId}}, {_id: {$nin: homesLiked}}, {_id: {$nin: homesDisliked}}], userHome: {$in: homeIds}}).populate('userHome').then((travelPlans) => {
             return res.json(travelPlans);
           }).catch(err => console.log(err));
         }).catch(err => console.log(err));
@@ -105,7 +126,7 @@ router.put('/travel/:id', (req, res, next) => {
       landscape : req.body.landscape
     };
     
-    Travel.findOneAndUpdate(travelId, updateTravel, {new: true}).then(travel => {
+    Travel.findOneAndUpdate({ _id: travelId}, updateTravel, {new: true}).then(travel => {
       res.json({message: 'Travel Updated'});
     }).catch(err => next(err));
     
@@ -139,17 +160,14 @@ router.delete('/travel/:id', (req, res, next) => {
 router.put('/travel/like/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const likeId = mongoose.Types.ObjectId(req.params.id);
-    let travelId;
+    const travelId = mongoose.Types.ObjectId(req.body.id);
     
     if(!mongoose.Types.ObjectId.isValid(likeId)){
       res.status(400).json({message: 'id not found'});
       return;
     }
-    Travel.find({$and: [{user: mongoose.Types.ObjectId(req.user._id)}, {active: true}]}, {_id: 1}).exec().then((result) => {
-      travelId = result[0]._id;
-      Travel.updateOne({_id: travelId}, {$push: {homesLiked: likeId}}).then(() => {
-        return res.json({message: 'Like Added'});
-      }).catch(err => next(err));
+    Travel.findOneAndUpdate({_id: travelId}, {$push: {homesLiked: likeId}}).then((result) => {
+      return res.json({message: 'Like Added'});
     }).catch(err => next(err));
     
     return;
@@ -162,24 +180,40 @@ router.put('/travel/like/:id', (req, res, next) => {
 router.put('/travel/dislike/:id', (req, res, next) => {
   if(req.isAuthenticated()){
     const dislikeId = mongoose.Types.ObjectId(req.params.id);
-    let travelId;
+    const travelId = mongoose.Types.ObjectId(req.body.id);
     
     if(!mongoose.Types.ObjectId.isValid(dislikeId)){
       res.status(400).json({message: 'id not found'});
       return;
     }
     
-    Travel.find({$and: [{user: mongoose.Types.ObjectId(req.user._id)}, {active: true}]}, {_id: 1}).exec().then((result) => {
-      travelId = result[0]._id;
-      Travel.updateOne({_id: travelId}, {$push: {homesDisliked: dislikeId}}).then(() => {
-        return res.json({message: 'Dislike Added'});
-      }).catch(err => next(err));
+    Travel.findOneAndUpdate({_id: travelId}, {$push: {homesDisliked: travelId}}).then((result) => {
+      return res.json({message: 'Dislike Added'});
     }).catch(err => next(err));
     
     return;
   }
   
   res.status(403).json({message: 'Unauthorized access'});
+});
+
+router.get('/travel/:travelid/matchcheck/:likeid', (req, res, next) =>{
+  const travelId = req.params.travelid;
+  const likeId = mongoose.Types.ObjectId(req.params.likeid);
+  let match = false;
+  
+  Travel.findById(likeId).then((results) => {
+    if(results){
+      for(let i = 0; i < results.homesLiked.length; i++){
+        if(results.homesLiked[i] == travelId){
+          match = true;
+          return res.json(match);
+        }
+      }
+    } else {
+      return res.json({message: 'No Results!'});
+    }
+  }).catch(err => next(err));
 });
 
 module.exports = router;
