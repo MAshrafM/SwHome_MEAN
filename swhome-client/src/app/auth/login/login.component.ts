@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthRoutesService} from '../../services/auth-routes.service'
+import { AuthRoutesService} from '../../services/auth-routes.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   user: any = false;
   error: string;
   
-  constructor(private auth: AuthRoutesService) { }
+  constructor(private auth: AuthRoutesService, private router: Router) { }
 
   ngOnInit() {
     this.auth.isLoggedIn().subscribe(user => this.successCb(user));
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
   successCb(user){
     this.user = user;
     this.error = null;
+    this.router.navigate('/dashboard');
   }
 
 }

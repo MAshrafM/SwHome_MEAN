@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthRoutesService} from '../../services/auth-routes.service'
+import { AuthRoutesService} from '../../services/auth-routes.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +20,7 @@ export class SignupComponent implements OnInit {
   error: string;
   privateData: any = '';
   
-  constructor(private auth: AuthRoutesService) { }
+  constructor(private auth: AuthRoutesService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -36,5 +37,6 @@ export class SignupComponent implements OnInit {
   successCb(user){
     this.user = user;
     this.error = null;
+    this.router.navigate(["/login"]);
   }
 }
