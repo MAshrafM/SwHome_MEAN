@@ -22,6 +22,7 @@ import { ResultsComponent } from './results/results.component';
 import { MatchesComponent } from './matches/matches.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { EditHomeComponent } from './edit-home/edit-home.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { EditHomeComponent } from './edit-home/edit-home.component';
     ResultsComponent,
     MatchesComponent,
     LandingPageComponent,
-    EditHomeComponent
+    EditHomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

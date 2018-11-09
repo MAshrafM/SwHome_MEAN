@@ -1,0 +1,26 @@
+.navbar{
+  height: 3.5em;
+  background-color: #006392;
+  
+  &__login{
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.center_items {
+  text-align: center;
+}
+
+.right-items {
+  text-align: right;
+}
