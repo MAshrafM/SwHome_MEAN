@@ -14,11 +14,13 @@ export class DashboardComponent implements OnInit {
   homes: any = []
   travels: any = [];
   matches: any = [];
+  userId: any = [];
   
   constructor(private home: HomeRoutesService, private travel: TravelRoutesService, private match: MatchRoutesService) { }
 
   ngOnInit() {
     this.home.getMyHome().subscribe((homes) => {
+      this.userId = homes[0].owner;
       this.homes = homes;
     });
     

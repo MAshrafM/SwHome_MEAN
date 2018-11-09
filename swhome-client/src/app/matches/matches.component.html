@@ -1,3 +1,27 @@
-<p>
-  matches works!
-</p>
+<h3>Match Info</h3>
+<div *ngIf="travelHome">
+  <p>
+    {{travelHome.home}}
+    {{travelHome.setting}}
+    {{travelHome.landscape}}
+    {{travelHome.description}}
+  </p>
+</div>
+<button type="button" (click)="acceptMatch()"> Accept </button>
+<button type="button" (click)="declineMatch()"> Decline </button>
+
+<div>
+  <div *ngIf="matchLength == 11">
+    <h3>Match Contact</h3>
+    <div *ngIf="contactInfo">
+      {{contactInfo.firstName}}
+      {{contactInfo.lastName}}
+      {{contactInfo.email}}
+      {{travelHome.address.street}}
+      {{travelHome.address.city}}
+      {{travelHome.address.zipCode}}      
+      {{travelHome.address.state}}
+      {{travelHome.address.country}}
+    </div>
+  </div>
+</div>

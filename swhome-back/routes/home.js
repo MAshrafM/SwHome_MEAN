@@ -86,10 +86,10 @@ router.post('/myhome', parser, (req, res, next) => {
         return;
       }
       
-      if(userHomes.length){
+      if(userHomes.length > 0){
         const homeId = userHomes[0]._id;
         userHomes[0].images.push(images[0]);
-        Home.findByIdAndUpdate(homeId, userHomes[0], {new: true}).then((home) => {
+        Home.findOneAndUpdate({_id: homeId}, userHomes[0], {new: true}).then((home) => {
           return res.json({message: 'Home Updated'});
         }).catch(error => next(error));
         return;

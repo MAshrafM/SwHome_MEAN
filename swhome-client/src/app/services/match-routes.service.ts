@@ -24,4 +24,20 @@ export class MatchRoutesService {
   getMatch(){
     return this.http.get(`#{this.mainURL}/match`, {withCredentials: true}).pipe(map(res => res.json()));
   }
+  
+  getMatchDetails(matchId){
+    return this.http.get(`${this.mainURL}/match/${matchId}`, {withCredentials: true}).pipe(map(res => res.json()));
+  }
+  
+  acceptMatch(matchId){
+    return this.http.put(`${this.mainURL}/match/accept/`, matchId, {withCredentials: true}).pipe(map(res => res.json()));
+  }
+  
+  declineMatch(matchId){
+    return this.http.put(`${this.mainURL}/match/decline/`, matchId, {withCredentials: true}).pipe(map(res => res.json()));
+  }
+  
+  privateInfo(userId){
+    return this.http.get(`${this.mainURL}/confirmed-data/${userId}`, {withCredentials: true}).pipe(map(res => res.json()));
+  }
 }

@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'add-travel', component: AddTravelComponent },
   { path: 'edit-travel/:id', component: EditTravelComponent },
   { path: 'results/:id', component: ResultsComponent },
-  { path: 'matches', component: MatchesComponent },
+  { path: 'matches/:travel/:connection', component: MatchesComponent },
   { path: '**', redirectTo: ''}
 ];
 

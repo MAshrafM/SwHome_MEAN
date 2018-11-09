@@ -18,12 +18,28 @@
 <h3>My Travels</h3>
 <div class="travel-container">
   <div *ngFor="let travel of travels">
-    <p>Start Date: {{travel.beginDate.substr(0, 10)}}  End Date: {{travel.endDate.substr(0, 10)}}
+    <p>Start Date: {{travel.beginDate | date}}  End Date: {{travel.endDate | date}}
       <a [routerLink]="['../edit-travel', travel._id]">Edit</a>
       <a [routerLink]="['../results', travel._id]">Results</a>
       <button (click)="deleteTravel(travel._id)">Delete</button>
     </p>
     <a [routerLink]="['../add-travel']">Add Travel</a>
+  </div>
+</div>
+
+<div *ngIf="matches.length > 0">
+  <h3>My Matches</h3>
+  <div class="matches-container">
+    <div *ngFor="let match of matches">
+      <div *ngIf="match.active == true">
+        <div *ngIf="match.userRequest1.user === userId">
+          <a [routerLink]="['../matches', match.userRequest2._id, match._id]">Start Date: {{connection.userRequest1.beginDate | date}} End Date: {{connection.userRequest1.endDate | date }}</a>
+        </div>
+        <div *ngIf="match.userRequest2.user === userId">
+          <a [routerLink]="['../matches', match.userRequest1._id, match._id]">Start Date: {{connection.userRequest2.beginDate | date}} End Date: {{connection.userRequest2.endDate | date }}</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
