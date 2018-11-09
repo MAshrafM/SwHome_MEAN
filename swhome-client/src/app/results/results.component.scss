@@ -1,3 +1,38 @@
-#slides{
-  width: 500px;
+.results-container{
+  height: 100vh;
+  background: #f3f9fc;
+  
+  .button-success {
+    background: #008000;
+  }
+  
+  .button-dislike {
+    background: #FF0000;
+  }
+  
+  .button-small {
+    font-size: 85%;
+    border-radius: .25em;
+  }
+  
+  img {
+    height: 10em;
+    width: 10em;
+    display: inline-block;
+    margin-left: .5em;
+  }
+}
+
+.results-card{
+  height: 40vh;
+  
+  &__spacing{
+    margin-top: 3em;  
+  }
+  
+  &__header{
+    background-color: #d9d9d9;
+    padding: .5em 0;
+    align-items: center;
+  }
 }

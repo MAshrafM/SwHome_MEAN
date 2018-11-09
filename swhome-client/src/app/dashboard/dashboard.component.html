@@ -83,11 +83,14 @@
           
           <div class="myhome__data pure-g">
             <div *ngFor="let travel of travels">
-              <p>Start Date: {{ travel.beginDate | date }} End Date: {{ travel.beginDate | date }}
-                <a [routerLink]="['../edit-travel', travel._id]">Edit</a>
-                <a [routerLink]="['../results', travel._id]">Results</a>
-                <button (click)="deleteTravel(travel._id)">Delete</button>
-              </p>
+              <div class="pure-u-1 inline_flex">
+                <div class="pure-u-6-12 grow_flex">
+                  <p>Start Date: {{ travel.beginDate | date }} End Date: {{ travel.beginDate | date }}</p>
+                </div>
+                <div class="pure-u-1-3 grow_flex"><a [routerLink]="['../edit-travel', travel._id]">Edit</a></div>
+                <div class="pure-u-1-3 grow_flex"> <a [routerLink]="['../results', travel._id]">Results</a></div>
+                <div class="pure-u-1-3 grow_flex"> <button (click)="deleteTravel(travel._id)">Delete</button></div>
+              </div>
             </div>
           </div>
         </div>
@@ -96,20 +99,38 @@
       </div>
     </div>
   </div>
-
-
   <div *ngIf="matches.length > 0">
-    <h3>My Matches</h3>
-    <div class="matches-container">
-      <div *ngFor="let match of matches">
-        <div *ngIf="match.active == true">
-          <div *ngIf="match.userRequest1.user === userId">
-            <a [routerLink]="['../matches', match.userRequest2._id, match._id]">Start Date: {{connection.userRequest1.beginDate | date}} End Date: {{connection.userRequest1.endDate | date }}</a>
+    <div class="myhome">
+      <div class="pure-g">
+        <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
+        
+        <div class="pure-u-18-24 pure-u-lg-18-24 pure-u-xl-18-24 myhome--spacing">
+          <div class="myhome__header pure-g">
+            <div class="pure-u-2-24 pure-u-lg-2-24 pure-u-xl-2-24"></div>
+            <div class="pure-u-21-24 pure-u-lg-21-24 pure-u-xl-21-24">
+              <h3>My Matches</h3>
+            </div>
+            
+            <div class="pure-u-1-24 pure-u-lg-1-24 pure-u-xl-1-24"></div>
           </div>
-          <div *ngIf="match.userRequest2.user === userId">
-            <a [routerLink]="['../matches', match.userRequest1._id, match._id]">Start Date: {{connection.userRequest2.beginDate | date}} End Date: {{connection.userRequest2.endDate | date }}</a>
+          
+          <div class="myhome__data pure-g">
+            <div *ngFor="let match of matches">
+              <div class="pure-u-1">
+              <div *ngIf="match.active == true">
+                <div *ngIf="match.userRequest1.user === userId">
+                  <a [routerLink]="['../matches', match.userRequest2._id, match._id]">Start Date: {{connection.userRequest1.beginDate | date}} End Date: {{connection.userRequest1.endDate | date }}</a>
+                </div>
+                <div *ngIf="match.userRequest2.user === userId">
+                  <a [routerLink]="['../matches', match.userRequest1._id, match._id]">Start Date: {{connection.userRequest2.beginDate | date}} End Date: {{connection.userRequest2.endDate | date }}</a>
+                </div>
+              </div>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
+        
       </div>
     </div>
   </div>

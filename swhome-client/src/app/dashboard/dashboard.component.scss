@@ -11,6 +11,10 @@
     border-radius: .25em;
   }
   
+  .button-dislike {
+    background: #FF0000;
+  }
+  
   img{
     height: 8em;
     width: 8em;
@@ -32,4 +36,10 @@
 
 .inline_flex {
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grow_flex {
+  flex-grow: 1;
 }
