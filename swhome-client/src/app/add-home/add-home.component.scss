@@ -1,0 +1,57 @@
+.add-home-container{
+  background-color: #f3f9fc;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  
+  .button-small {
+    font-size: 85%;
+    border-radius: .25em;
+  }
+}
+
+.home-form{
+  border-radius: 1em;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  background-color: #fff;
+  padding-bottom: 2.5em;
+  margin-top: 3em;
+  
+  &__header{
+    background-color: #d9d9d9;
+    border-radius: 1em 1em 0 0;
+    padding: .5em 0 1em 0;
+    
+    .button-cancel {
+      background: #e12b23;
+    }
+  }
+  
+  
+  &__data{
+    margin: 3em 0;
+    
+    input{
+      margin-top: .75em;
+    }
+    
+    &--label{
+      font-size: 1.2em;
+    }
+    
+    &--space{
+      padding-right:.5em;
+    }
+  }
+  
+  .button-success {
+    background: #006392;
+  }
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}

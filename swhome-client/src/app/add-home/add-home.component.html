@@ -1,106 +1,177 @@
-<h1>Add A New Home</h1>
-<button><a routerLink="/dashboard"> Back to Dashboard</a></button>
-
-
-<form>
-  <fieldset>
-    <legend> My Home </legend>
-    <label> Type</label>
-    <div>
-      <input type="radio" id="house" name="home" value="House" [(ngModel)]="newHome.home" required>
-      <label for="house">House</label>
-       <input type="radio" id="apt" name="home" value="Apt" [(ngModel)]="newHome.home" required>
-      <label for="apt">Apt</label>
-    </div>
+<div class="add-home-container">
+  <div class="pure-g container">
+    <div class="pure-u-1-24 pure-u-md-3-24 pure-u-lg-4-24 pure-u-xl-5-24"></div>
     
-    <label> Setting </label>
-    <div>
-      <input type="radio" id="urban" name="setting" value="Urban" [(ngModel)]="newHome.setting" required>
-      <label for="urban">Urban</label>
-       <input type="radio" id="suburban" name="setting" value="Suburban" [(ngModel)]="newHome.setting" required>
-      <label for="suburban">Suburban</label>
-       <input type="radio" id="rural" name="setting" value="Rural" [(ngModel)]="newHome.setting" required>
-      <label for="rural">Rural</label>
+    <div class="home-form pure-u-22-24 pure-u-md-18-24 pure-u-lg-16-24 pure-u-xl-14-24">
+      <form>
+        <fieldset>
+          <div class="home-form__header pure-g container">
+            <div class="pure-u-3-24"></div>
+            <div class="pure-u-18-24">
+              <h2> Add New Home </h2>
+            </div>
+            <div class="pure-u-3-24">
+              <button class="button-cancel button-small pure-button" routerLink="/dashboard">
+                <i class="far fa-times-circle"></i>
+                Cancel
+              </button>
+            </div>
+          </div>
+          
+          <div class="pure-g container home-form__data">
+            <div class="pure-u-1-3">
+              <label class="home-form__data--label">Type</label>
+              <div>
+                <input type="radio" id="house" name="home" value="House" [(ngModel)]="newHome.home" required>
+                <label class="home-form__data--space" for="house">House</label>
+                 <input class="home-form__data--space" type="radio" id="apt" name="home" value="Apt" [(ngModel)]="newHome.home"
+                  required>
+                <label class="home-form__data--space" for="apt">Apartment</label>
+              </div>
+            </div>
+            
+            <div class="pure-u-1-3">
+              <label class="home-form__data--label"> Setting </label>
+              <div>
+                <input type="radio" id="urban" name="setting" value="Urban" [(ngModel)]="newHome.setting" required>
+                <label class="home-form__data--space" for="urban">Urban</label>
+                 <input class="radio_input_spacing" type="radio" id="suburban" name="setting" value="Suburban"
+                  [(ngModel)]="newHome.setting" required>
+                <label class="home-form__data--space" for="suburban">Suburban</label>
+                 <input class="home-form__data--space" type="radio" id="rural" name="setting" value="Rural" [(ngModel)]="newHome.setting"
+                  required>
+                <label class="home-form__data--space" for="rural">Rural</label>
+              </div>
+            </div>
+            
+            <div class="pure-u-1-3">
+              <label class="home-form__data--label"> Landscape </label>
+              <div class="pure-g">
+                <div class="pure-u-1-2">
+                  <div>
+                    <input class="home-form__data--space" type="radio" id="cityLandscape" name="landscape" value="City"
+                      [(ngModel)]="newHome.landscape" required>
+                    <label class="home-form__data--space" for="cityLandscape">City</label>
+                  </div>
+                  <div>
+                    <input class="home-form__data--space" type="radio" id="coastal" name="landscape" value="Coastal"
+                      [(ngModel)]="newHome.landscape" required>
+                    <label class="home-form__data--space" or="coastal">Coastal</label>
+                  </div>
+                </div>
+                 <div class="pure-u-1-2">
+                  <div>
+                    <input type="radio" id="mountainous" name="landscape" value="Mountainous" [(ngModel)]="newHome.landscape"
+                      required>
+                    <label for="mountainous">Mountainous</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="tropical" name="landscape" value="Tropical" [(ngModel)]="newHome.landscape"
+                      required>
+                    <label for="tropical">Tropical</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pure-g container home-form__data">
+            <div class="pure-u-1-3">
+              <label class="home-form__data--label"> Bedrooms </label>
+              <div>
+                <input type="radio" id="1" name="bedrooms" value="1" [(ngModel)]="newHome.bedrooms" required>
+                <label for="1">1</label>
+                 <input type="radio" id="2" name="bedrooms" value="2" [(ngModel)]="newHome.bedrooms" required>
+                <label for="2">2</label>
+                 <input type="radio" id="3" name="bedrooms" value="3" [(ngModel)]="newHome.bedrooms" required>
+                <label for="3">3</label>
+                 <input type="radio" id="4" name="bedrooms" value="4" [(ngModel)]="newHome.bedrooms" required>
+                <label for="4">4+</label>
+              </div>
+            </div>
+            
+            <div class="pure-u-1-3">
+              <label class="home-form__data--label"> Beds </label>
+              <div>
+                <input type="radio" id="1Bed" name="beds" value="1" [(ngModel)]="newHome.beds" required>
+                <label for="1Bed">1</label>
+                 <input type="radio" id="2Bed" name="beds" value="2" [(ngModel)]="newHome.beds" required>
+                <label for="2Bed">2</label>
+                 <input type="radio" id="3Bed" name="beds" value="3" [(ngModel)]="newHome.beds" required>
+                <label for="3Bed">3</label>
+                 <input type="radio" id="4Bed" name="beds" value="4" [(ngModel)]="newHome.beds" required>
+                <label for="4Bed">4+</label>
+              </div>
+            </div>
+            
+            <div class="pure-u-1-3">
+              <label class="home-form__data--label"> Baths </label>
+              <div>
+                <input type="radio" id="1Bath" name="baths" value="1" [(ngModel)]="newHome.baths" required>
+                <label for="1Bath">1</label>
+                 <input type="radio" id="2Bath" name="baths" value="2" [(ngModel)]="newHome.baths" required>
+                <label for="2Bath">2</label>
+                 <input type="radio" id="3Bath" name="baths" value="3" [(ngModel)]="newHome.baths" required>
+                <label for="3Bath">3</label>
+                 <input type="radio" id="4Bath" name="baths" value="4" [(ngModel)]="newHome.baths" required>
+                <label for="4Bath">4+</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pure-g container home-form__data">
+            <div class="pure-u">
+              <label class="home-form__data--label"> Address </label>
+              <div class="">
+                <input type="text" id="street" name="street" [(ngModel)]="address.street" placeholder="Street" required />
+                 <input type="text" id="city" name="city" [(ngModel)]="address.city" placeholder="City" required />
+                 <input type="text" id="state" name="state" [(ngModel)]="address.state" placeholder="State" required />
+                 <input type="text" id="zipCode" name="zipCode" [(ngModel)]="address.zipCode" placeholder="Zip Code"
+                  required />
+                 <input type="text" id="country" name="country" [(ngModel)]="address.country" placeholder="Country"
+                  required />
+              </div>
+            </div>
+          </div>
+          
+          <div class="pure-g container home-form__data">
+            <div class="pure-u-1-2">
+              <div class="pure-u-1">
+                <label class="home-form__data--label"> Description </label>
+              </div>
+              <div class="pure-u-1">
+                <textarea rows="6" cols="50" name="description" [(ngModel)]="newHome.description" placeholder="Recently remodeled, great home for a family...">
+                </textarea>
+              </div>
+            </div>
+             <div class="pure-u-1-2">
+              <div class="pure-g">
+                <div class="pure-u-1">
+                  <label class="home-form__data--label"> Upload Photos </label>
+                </div>
+              </div>
+               <div class="pure-g">
+                <div class="pure-u-1">
+                  <input type="file" name="file" ng2FileSelect [uploader]="uploader" multiple />
+                </div>
+              </div>
+              <div class="pure-g">
+                <div class="pure-u-1">
+                  <p>Queue length: {{ uploader?.queue?.length }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="pure-g container">
+          <div class="pure-u">
+            <button class="button-success pure-button" (click)="submit()">
+              <i class="fas fa-plus-circle"></i>
+              Add Home
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-    
-    <label> Landscape </label>
-    <div>
-      <input type="radio" id="cityLandscape" name="landscape" value="City" [(ngModel)]="newHome.landscape" required>
-      <label for="cityLandscape">City</label>
-       <input type="radio" id="coastal" name="landscape" value="Coastal" [(ngModel)]="newHome.landscape" required>
-      <label for="coastal">Coastal</label>
-       <input type="radio" id="mountainous" name="landscape" value="Mountainous" [(ngModel)]="newHome.landscape" required>
-      <label for="mountainous">Mountainous</label>    
-      <input type="radio" id="tropical" name="landscape" value="Tropical" [(ngModel)]="newHome.landscape" required>
-      <label for="tropical">Tropical</label>
-    </div>
-    
-    <label> Bedrooms </label>
-    <div>
-      <input type="radio" id="1" name="bedrooms" value="1" [(ngModel)]="newHome.bedrooms" required>
-      <label for="1">1</label>
-
-      <input type="radio" id="2" name="bedrooms" value="2" [(ngModel)]="newHome.bedrooms" required>
-      <label for="2">2</label>
-
-      <input type="radio" id="3" name="bedrooms" value="3" [(ngModel)]="newHome.bedrooms" required>
-      <label for="3">3</label>
-      
-      <input type="radio" id="4" name="bedrooms" value="4" [(ngModel)]="newHome.bedrooms" required>
-      <label for="4">4+</label>
-    </div>
-    
-    <label> Beds </label>
-    <div>
-      <input type="radio" id="1Bed" name="beds" value="1" [(ngModel)]="newHome.beds" required>
-      <label for="1Bed">1</label>
-
-      <input type="radio" id="2Bed" name="beds" value="2" [(ngModel)]="newHome.beds" required>
-      <label for="2Bed">2</label>
-
-      <input type="radio" id="3Bed" name="beds" value="3" [(ngModel)]="newHome.beds" required>
-      <label for="3Bed">3</label>
-      
-      <input type="radio" id="4Bed" name="beds" value="4" [(ngModel)]="newHome.beds" required>
-      <label for="4Bed">4+</label>
-    </div>
-    
-    <label> Baths </label>
-    <div>
-      <input type="radio" id="1Bath" name="baths" value="1" [(ngModel)]="newHome.baths" required>
-      <label for="1Bath">1</label>
-       <input type="radio" id="2Bath" name="baths" value="2" [(ngModel)]="newHome.baths" required>
-      <label for="2Bath">2</label>
-       <input type="radio" id="3Bath" name="baths" value="3" [(ngModel)]="newHome.baths" required>
-      <label for="3Bath">3</label>
-      
-      <input type="radio" id="4Bath" name="baths" value="4" [(ngModel)]="newHome.baths" required>
-      <label for="4Bath">4+</label>
-    </div>
-    
-    <label> Address </label>
-    <div>
-      <label for="street">Street</label>
-      <input type="text" id="street" name="street" [(ngModel)]="address.street"  required />
-       <label for="city">City</label>
-      <input type="text" id="city" name="city" [(ngModel)]="address.city" required />
-       <label for="state">State</label>
-      <input type="text" id="state" name="state" [(ngModel)]="address.state" required />
-       <label for="zipCode">Zip Code</label>
-      <input type="text" id="zipCode" name="zipCode" [(ngModel)]="address.zipCode" required />
-       <label for="country">Country</label>
-      <input type="text" id="country" name="country" [(ngModel)]="address.country" required />
-    </div>
-    
-    <label> Description </label>
-    <textarea rows="4" cols="50" name="description" [(ngModel)]="newHome.description" placeholder="Recently remodeled, great home for a family...">
-        Recently remodeled, great home for a family...
-    </textarea>
-  </fieldset>
-  <div>
-    <input type="file" name="file" ng2FileSelect [uploader]="uploader" multiple />
+    <div class="pure-u-1-24 pure-u-md-3-24 pure-u-lg-4-24 pure-u-xl-5-24"></div>
   </div>
-  <h3>Upload queue</h3>
-  <p>Queue length: {{ uploader?.queue?.length }}</p>
-  <button (click)="submit()"> Add Home </button>
-</form>
+</div>

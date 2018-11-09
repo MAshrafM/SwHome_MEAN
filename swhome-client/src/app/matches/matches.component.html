@@ -7,8 +7,10 @@
     {{travelHome.description}}
   </p>
 </div>
-<button type="button" (click)="acceptMatch()"> Accept </button>
-<button type="button" (click)="declineMatch()"> Decline </button>
+<div *ngIf="contactInfo">
+  <button type="button" (click)="acceptMatch()"> Accept </button>
+  <button type="button" (click)="declineMatch()"> Decline </button>
+</div>
 
 <div>
   <div *ngIf="matchLength == 11">

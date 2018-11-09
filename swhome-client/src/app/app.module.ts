@@ -9,6 +9,7 @@ import { AuthRoutesService } from './services/auth-routes.service';
 import { HomeRoutesService } from './services/home-routes.service';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // Components
 import { AppComponent } from './app.component';
 import { AddHomeComponent } from './add-home/add-home.component';
@@ -43,6 +44,7 @@ import { EditHomeComponent } from './edit-home/edit-home.component';
     FormsModule,
     FileUploadModule,
     NgxPageScrollModule,
+    NgbModule
   ],
   providers: [AuthRoutesService, HomeRoutesService],
   bootstrap: [AppComponent]

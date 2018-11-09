@@ -20,6 +20,8 @@ export class AddTravelComponent implements OnInit {
   ngOnInit() {}
   
   addTravel(){
+    this.formInfo.beginDate += 'T00:00:00';
+    this.formInfo.endDate += 'T00:00:00';
     this.travel.addTravel(this.formInfo).subscribe();
   }
 
