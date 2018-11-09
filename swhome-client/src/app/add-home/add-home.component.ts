@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../environments/environment'
 
@@ -11,7 +12,8 @@ const URL = `${environment.BASE_URL}/api/myhome`;
 })
 export class AddHomeComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
-    url: URL, itemAlias: 'file'
+    url: URL, 
+    itemAlias: 'file'
   });
   
   address = {
@@ -34,7 +36,7 @@ export class AddHomeComponent implements OnInit {
   
   feedback: string;
   
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.uploader.onSuccessItem = (item, res) => {
@@ -59,6 +61,7 @@ export class AddHomeComponent implements OnInit {
     };
     
     this.uploader.uploadAll();
+    this.router.navigate(["/dashboard"])
   }
 
 }

@@ -85,7 +85,7 @@
             <div *ngFor="let travel of travels">
               <div class="pure-u-1 inline_flex">
                 <div class="pure-u-6-12 grow_flex">
-                  <p>Start Date: {{ travel.beginDate | date }} End Date: {{ travel.beginDate | date }}</p>
+                  <p>Start Date: {{ travel.beginDate | date }} End Date: {{ travel.endDate | date }}</p>
                 </div>
                 <div class="pure-u-1-3 grow_flex"><a [routerLink]="['../edit-travel', travel._id]">Edit</a></div>
                 <div class="pure-u-1-3 grow_flex"> <a [routerLink]="['../results', travel._id]">Results</a></div>

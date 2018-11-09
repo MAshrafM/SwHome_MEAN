@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
 import { TravelRoutesService } from '../services/travel-routes.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class AddTravelComponent implements OnInit {
     landscape: ''
   };
   
-  constructor(private travel: TravelRoutesService) { }
+  constructor(private travel: TravelRoutesService, private router: Router) { }
 
   ngOnInit() {}
   
@@ -23,6 +24,7 @@ export class AddTravelComponent implements OnInit {
     this.formInfo.beginDate += 'T00:00:00';
     this.formInfo.endDate += 'T00:00:00';
     this.travel.addTravel(this.formInfo).subscribe();
+    this.router.navigate(["/dashboard"]);
   }
 
 }
