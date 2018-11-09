@@ -2,12 +2,11 @@
 <div class="dashboard-container">
   <section class="myhome">
     <div class="pure-g">
-      <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing">Empty</div>
+      <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
        
       <div class="pure-u-18-24 pure-u-lg-18-24 pure-u-xl-18-24 myhome--spacing">
         <div id="myhome__header" class="pure-g">
           <div class="pure-u-2-24 pure-u-lg-2-24 pure-u-xl-2-24">
-            Empty
           </div>
           <div class="pure-u-17-24 pure-u-lg-17-24 pure-u-xl-17-24">
             <h3>My Home</h3>
@@ -19,42 +18,85 @@
             </button>
           </div>
           <div class="pure-u-1-24 pure-u-lg-1-24 pure-u-xl-1-24">
-            Empty
+          </div>
+        </div>
+        
+        <div class="myhome__date pure-g">
+          <div *ngFor="let home of homes">
+            <div class="pure-u-3-4 pure-u-lg-3-4 pure-u-xl-3-4 inline_flex">
+              <div *ngFor="let image of home.images">
+                <img [src]="image.url" />
+              </div>
+            </div>
+             <div class="pure-u-1-4 pure-u-lg-1-4 pure-u-xl-1-4">
+              <div class="pure-g">
+                <div class="pure-u-1">
+                  <p> {{ home.address.street }} </p>
+                </div>
+              </div>
+              <div class="pure-g">
+                <div class="pure-u-1">
+                  <p> {{ home.address.city }} </p>
+                </div>
+              </div><div class="pure-g">
+                <div class="pure-u-1">
+                  <p> {{ home.address.state }} </p>
+                </div>
+              </div>
+              <div class="pure-g">
+                <div class="pure-u-1">
+                  <p> {{ home.address.zipCode }} </p>
+                </div>
+              </div>
+              <div class="pure-g">
+                <div class="pure-u-1">
+                  <p> {{ home.address.country }} </p>
+                </div>
+              </div>
+             </div>
           </div>
         </div>
       </div>
       
-      <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing">Empty</div>
+      <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
     </div>
   </section>
-  <div class="main-container">
-    <h3>My Home</h3>
-    <div *ngFor="let home of homes">
-      <div *ngFor="let image of home.images">
-        <img [src]="image.url" />
+  <div *ngIf="homes.length > 0">
+    <div class="myhome">
+      <div class="pure-g">
+        <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
+        
+        <div class="pure-u-18-24 pure-u-lg-18-24 pure-u-xl-18-24 myhome--spacing">
+          <div class="myhome__header pure-g">
+            <div class="pure-u-2-24 pure-u-lg-2-24 pure-u-xl-2-24"></div>
+            <div class="pure-u-17-24 pure-u-lg-17-24 pure-u-xl-17-24">
+              <h3>My Travel Requests</h3>
+            </div>
+            <div class="pure-u-4-24 pure-u-lg-4-24 pure-u-xl-4-24">
+              <button class="button-success button-small pure-button" routerLink="/add-travel">
+                <i class="fas fa-plus-circle"></i>
+                Add Request
+              </button>
+            </div>
+            <div class="pure-u-2-24 pure-u-lg-2-24 pure-u-xl-2-24"></div>
+          </div>
+          
+          <div class="myhome__data pure-g">
+            <div *ngFor="let travel of travels">
+              <p>Start Date: {{ travel.beginDate | date }} End Date: {{ travel.beginDate | date }}
+                <a [routerLink]="['../edit-travel', travel._id]">Edit</a>
+                <a [routerLink]="['../results', travel._id]">Results</a>
+                <button (click)="deleteTravel(travel._id)">Delete</button>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
+        
       </div>
-      <p>{{home.address.street}}</p>
-      <p>{{home.address.city}}</p>
-      <p>{{home.address.state}}</p>
-      <p>{{home.address.zipCode}}</p>
-      <p>{{home.address.country}}</p>
-      <a [routerLink]="['home']">View Details</a>
-      <a [routerLink]="['edit-home', home._id]">Edit</a>
-    </div>
-    <a routerLink="/add-home">Add Home</a>
-  </div>
-  
-  <h3>My Travels</h3>
-  <div class="travel-container">
-    <div *ngFor="let travel of travels">
-      <p>Start Date: {{travel.beginDate | date}}  End Date: {{travel.endDate | date}}
-        <a [routerLink]="['../edit-travel', travel._id]">Edit</a>
-        <a [routerLink]="['../results', travel._id]">Results</a>
-        <button (click)="deleteTravel(travel._id)">Delete</button>
-      </p>
-      <a [routerLink]="['../add-travel']">Add Travel</a>
     </div>
   </div>
+
 
   <div *ngIf="matches.length > 0">
     <h3>My Matches</h3>

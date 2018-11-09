@@ -10,6 +10,11 @@
     font-size: 85%;
     border-radius: .25em;
   }
+  
+  img{
+    height: 8em;
+    width: 8em;
+  }
 }
 
 .myhome{
@@ -23,4 +28,8 @@
     padding: .5em 0;
     align-items: center;
   }
+}
+
+.inline_flex {
+  display: inline-flex;
 }
