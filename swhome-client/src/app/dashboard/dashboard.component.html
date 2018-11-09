@@ -1,42 +1,71 @@
-<h3>My Home</h3>
-<div class="main-container">
-  <div *ngFor="let home of homes">
-    <div *ngFor="let image of home.images">
-      <img [src]="image.url" />
-    </div>
-    <p>{{home.address.street}}</p>
-    <p>{{home.address.city}}</p>
-    <p>{{home.address.state}}</p>
-    <p>{{home.address.zipCode}}</p>
-    <p>{{home.address.country}}</p>
-    <a [routerLink]="['home']">View Details</a>
-    <a [routerLink]="['edit-home', home._id]">Edit</a>
-  </div>
-  <a routerLink="/add-home">Add Home</a>
-</div>
-
-<h3>My Travels</h3>
-<div class="travel-container">
-  <div *ngFor="let travel of travels">
-    <p>Start Date: {{travel.beginDate | date}}  End Date: {{travel.endDate | date}}
-      <a [routerLink]="['../edit-travel', travel._id]">Edit</a>
-      <a [routerLink]="['../results', travel._id]">Results</a>
-      <button (click)="deleteTravel(travel._id)">Delete</button>
-    </p>
-    <a [routerLink]="['../add-travel']">Add Travel</a>
-  </div>
-</div>
-
-<div *ngIf="matches.length > 0">
-  <h3>My Matches</h3>
-  <div class="matches-container">
-    <div *ngFor="let match of matches">
-      <div *ngIf="match.active == true">
-        <div *ngIf="match.userRequest1.user === userId">
-          <a [routerLink]="['../matches', match.userRequest2._id, match._id]">Start Date: {{connection.userRequest1.beginDate | date}} End Date: {{connection.userRequest1.endDate | date }}</a>
+<div class="dashboard-container">
+  <section class="myhome">
+    <div class="pure-g">
+      <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing">Empty</div>
+       
+      <div class="pure-u-18-24 pure-u-lg-18-24 pure-u-xl-18-24 myhome--spacing">
+        <div id="myhome__header" class="pure-g">
+          <div class="pure-u-2-24 pure-u-lg-2-24 pure-u-xl-2-24">
+            Empty
+          </div>
+          <div class="pure-u-17-24 pure-u-lg-17-24 pure-u-xl-17-24">
+            <h3>My Home</h3>
+          </div>
+          <div class="pure-u-4-24 pure-u-lg-4-24 pure-u-xl-4-24">
+            <button class="button-success button-small pure-button" routerLink="/add-home">
+              <i class="fas fa-plus-circle"></i>
+              Add Home
+            </button>
+          </div>
+          <div class="pure-u-1-24 pure-u-lg-1-24 pure-u-xl-1-24">
+            Empty
+          </div>
         </div>
-        <div *ngIf="match.userRequest2.user === userId">
-          <a [routerLink]="['../matches', match.userRequest1._id, match._id]">Start Date: {{connection.userRequest2.beginDate | date}} End Date: {{connection.userRequest2.endDate | date }}</a>
+      </div>
+      
+      <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing">Empty</div>
+    </div>
+  </section>
+  <div class="main-container">
+    <h3>My Home</h3>
+    <div *ngFor="let home of homes">
+      <div *ngFor="let image of home.images">
+        <img [src]="image.url" />
+      </div>
+      <p>{{home.address.street}}</p>
+      <p>{{home.address.city}}</p>
+      <p>{{home.address.state}}</p>
+      <p>{{home.address.zipCode}}</p>
+      <p>{{home.address.country}}</p>
+      <a [routerLink]="['home']">View Details</a>
+      <a [routerLink]="['edit-home', home._id]">Edit</a>
+    </div>
+    <a routerLink="/add-home">Add Home</a>
+  </div>
+  
+  <h3>My Travels</h3>
+  <div class="travel-container">
+    <div *ngFor="let travel of travels">
+      <p>Start Date: {{travel.beginDate | date}}  End Date: {{travel.endDate | date}}
+        <a [routerLink]="['../edit-travel', travel._id]">Edit</a>
+        <a [routerLink]="['../results', travel._id]">Results</a>
+        <button (click)="deleteTravel(travel._id)">Delete</button>
+      </p>
+      <a [routerLink]="['../add-travel']">Add Travel</a>
+    </div>
+  </div>
+
+  <div *ngIf="matches.length > 0">
+    <h3>My Matches</h3>
+    <div class="matches-container">
+      <div *ngFor="let match of matches">
+        <div *ngIf="match.active == true">
+          <div *ngIf="match.userRequest1.user === userId">
+            <a [routerLink]="['../matches', match.userRequest2._id, match._id]">Start Date: {{connection.userRequest1.beginDate | date}} End Date: {{connection.userRequest1.endDate | date }}</a>
+          </div>
+          <div *ngIf="match.userRequest2.user === userId">
+            <a [routerLink]="['../matches', match.userRequest1._id, match._id]">Start Date: {{connection.userRequest2.beginDate | date}} End Date: {{connection.userRequest2.endDate | date }}</a>
+          </div>
         </div>
       </div>
     </div>

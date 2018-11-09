@@ -1,0 +1,26 @@
+.dashboard-container{
+  height: 100vh;
+  background: #f3f9fc;
+  
+  .button-success {
+    background: #006392;
+  }
+  
+  .button-small {
+    font-size: 85%;
+    border-radius: .25em;
+  }
+}
+
+.myhome{
+  height: 40vh;
+  &--spacing{
+    margin-top: 3em;  
+  }
+  
+  &__header{
+    background-color: #d9d9d9;
+    padding: .5em 0;
+    align-items: center;
+  }
+}
