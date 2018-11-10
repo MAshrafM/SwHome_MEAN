@@ -1,44 +1,31 @@
 <!-- Signup Section -->
-<section id="signup-section">
-<form class="signup-form pure-form pure-form-stacked center_items container">
-  <fieldset>
-    <h2>Sign Up</h2>
-    <div class="pure-g center_items container">
-       <div class="pure-u pure-u-lg-1 pure-u-xl-1 container">
-          <input class="" id="firstname" type="text" [(ngModel)]="formInfo.firstName" name="firstName" placeholder="First Name">
-      </div>
-    </div>
-
-    <div class="pure-g center_items container">
-       <div class="pure-u pure-u-lg-1 pure-u-xl-1">
-          <input id="lastname" type="text" [(ngModel)]="formInfo.lastName" name="lastName" placeholder="Last Name">
-      </div>
-    </div>
-
-    <div class="pure-g center_items container">
-       <div class="pure-u pure-u-lg-1 pure-u-xl-1">
-          <input id="email" type="email" [(ngModel)]="formInfo.email" name="email" placeholder="Email">
-      </div>
-    </div>
-    
-    <div class="pure-g center_items container">
-       <div class="pure-u-lg-1 pure-u-xl-1 pure-u">
-          <input id="username" type="text" [(ngModel)]="formInfo.username" name="username" placeholder="Username">
-      </div>
-    </div>
-
-    <div class="pure-g center_items container">
-      <div class="pure-u pure-u-lg-1 pure-u-xl-1">
-        <input id="password" type="password" [(ngModel)]="formInfo.password" name="password" placeholder="Password">
-      </div>
-    </div>
-
-    <label for="remember" class="pure-checkbox">
-      <input id="remember" type="checkbox"> Remember me
-    </label>
-     <button type="button" (click)="signup()" class="pure-button pure-button-primary"> Sign up</button>
-    <p>Already have an account? <a routerLink="/login">Log in</a>.</p>
-  </fieldset>
+<form class="form">
+  <div class="form__group">
+    <input type="text" class="form__input" placeholder="First name" id="firstname" [(ngModel)]="formInfo.firstName"
+      name="firstName" required>
+    <label for="firstname" class="form__label">First name</label>
+  </div>
+   <div class="form__group">
+    <input type="text" class="form__input" placeholder="Last name" id="lastname" [(ngModel)]="formInfo.lastName" name="lastName"
+      required>
+    <label for="lastname" class="form__label">Last name</label>
+  </div>
+   <div class="form__group">
+    <input type="email" class="form__input" placeholder="Email address" id="email" [(ngModel)]="formInfo.email" name="email"
+      required>
+    <label for="email" class="form__label">Email address</label>
+  </div>
+   <div class="form__group">
+    <input type="password" class="form__input" placeholder="Password" id="password" [(ngModel)]="formInfo.password"
+      name="password" required>
+    <label for="password" class="form__label">Password</label>
+  </div>
+   <div class="form__group">
+    <input id="remember" type="checkbox" class="form__checkbox">
+    <label for="remember" class="form__checkbox-label"> Remember me</label>
+  </div>
+   <div class="form__group">
+    <button type="button" (click)="signup()" class="form__btn">Sign up</button>
+  </div>
 </form>
-</section>
 <!-- End Signup Section -->

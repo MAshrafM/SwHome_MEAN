@@ -62,7 +62,7 @@ export class MatchesComponent implements OnInit {
   }
   
   privateInfo(userId){
-    this.match.private(userId).subscribe((userInfo) => {
+    this.match.privateInfo(userId).subscribe((userInfo) => {
       this.contactInfo = userInfo[0];
     });
   }

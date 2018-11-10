@@ -1,112 +1,99 @@
-.main-intro {
-  height: 100vh;
-  background-image: url(/src/assets/images/adventureballshaped.jpg);
-  background-position: center; 
-  background-repeat: no-repeat; 
+@import '../scss/vars';
+
+.header{
+  background-image: url(../../assets/images/bg-img@2x.jpg);
   background-size: cover;
+  background-position: center;
+  display: grid;
+  grid-template-rows: 20% 80%;
+  grid-template-columns: 59% 39%;
+  grid-column-gap: 2%;
   
-  &__nav{    
-    &--padding{
-      padding-top: .75em;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-    
-    &--logo{
-      color: #fff;
-      font-family: CircularStd;
-      font-weight: bold;
-    }
-    
-    &--link{
-      color: #fff;
-      font-family: CircularStd;
-      font-weight: bold;
-    }
+  &__logo-box {
+    padding: 4rem 0 0 6rem;
   }
   
-  &__text{
-    height: 80vh;
-    
-    &--slogan{
-      color: #fff;
-      font-family: CircularStd;
-      font-size: 2.5em;
-      padding-top:23vh;
-    }
-    
-    &--bold{
-      color: #000;
-      font-family: CircularStd;
-      font-weight: bold;
-    }
+  &__logo {
+    height: 6.7rem;
   }
   
-  &__footer{
-    height: 10vh;
+  &__login-box {
+    position: relative;
+  }
+  
+  &__login-link {
+    &:link,
+    &:visited {
+      position: absolute;
+      top: 5rem;
+      right: 6.5rem;
+      display: inline-block;
+      font-size: $default-font-size;
+      font-weight: bold;
+      padding: .7rem 3.5rem 1rem;
+      border-radius: 1.8rem;
+      border: 1px solid $color-primary;
+      background-color: $color-white;
+      color: $color-primary;
+      text-decoration: none;
+      height: 3.6rem;
+      transition: all .2s;
+    }
+    &:hover {
+      transform: translateY(-.3rem);
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    }
+    &:active,
+    &:focus {
+      transform: translateY(-1px);
+      box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+  }
+  &__text-box {
+    margin: 12rem 0 0 6rem;
+  }
+   &__heading-primary {
+    color: $color-white;
+    font-size: 5rem;	
+    font-style: italic;	
+    font-weight: 900;	
+    line-height: 6rem;	
+    text-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+  }
+   &__heading-secondary {
+    color: $color-white;		
+    font-size: 3rem;	
+    line-height: 3.6rem;	
+    text-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+  }
+   &__form-box {
+    padding: 1rem 6.5rem 2rem 7rem;
   }
 }
 
-.main-middle{
-  height: 100vh;
-  padding-top: 2em;
-  padding-bottom: 2em;
-  background-color: HSL(200, 55%, 97%);
-  
-  &__pane{
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-    margin-top: 20vh;
-    
-    h2{
-      text-align: center;
-      margin-top: 1.3em;
-    }
-    
-    &--left{
-      background-color: #006392;
-      color: #fff;
-      
-      h2{
-        text-align:center;
-      }
-    }
-    
-    &--right{
-      background-color: #fff;
-      text-align: center;
-      justify-content: center;
-      
-      h2{
-        margin-top: 1.3em;
-      }
-    }
-  }
-  
-  .info-graphic{
-    padding-left: 1.5em;
-    margin-top: 0.5em;
-    
-    &__avatar{
-      border-radius: 50%;
-      height: 4em;
-      width: 4em;
-    }
-    
-    &__text{
-      padding-left: 2em;
-      margin-top: 1em;
-      
-      p{
-        padding-top: 0.5em;
-      }
-    }
-  }
+.section-about {
+  display: grid;
+  margin: 5rem 14rem;
+  grid-template-rows: 20rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5rem;
+  align-items: center;
+  justify-items: center;
 }
 
-.center_items {
+.feature-box {
   text-align: center;
-}
-
-.layout_items {
-  padding-top: 1.3em;
+   &__icon {
+    display: inline-block;
+    line-height: 5rem;
+  }
+   &__heading {
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: $color-primary;
+  }
+   &__text {
+    font-size: $default-font-size;
+    color: $color-grey;
+  }
 }

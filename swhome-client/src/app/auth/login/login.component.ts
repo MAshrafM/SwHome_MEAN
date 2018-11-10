@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   successCb(user){
     this.user = user;
     this.error = null;
-    this.router.navigate('/dashboard');
+    this.router.navigate(['/dashboard']);
   }
 
 }

@@ -1,24 +1,65 @@
-.signup-form{
-  input, button, p{
-    margin-top: 1em;
-  }
-  
-  h2{
-    margin-top: 1.3em;
-  }
-  
-  p{
-    padding-bottom: 1em;
-  }
-  
-  button{
-    background-color: #006392;
-    color: #fff;
-  }
-}
+@import '../../scss/vars';
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-content: center;
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+  &__input {
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: inherit;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    background-color: $color-white;
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    display: block;
+    transition: all .5s;
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, .1);
+      border-bottom: 3px solid $color-primary;
+    }
+     &:focus:invalid {
+      border-bottom: 3px solid $color-red;
+    }
+     &::-webkit-input-placeholder {
+      color: $color-grey-dark-2;
+    }
+  }  
+  &__label {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    display: block;
+    transition: all .3s;
+    color: $color-white;
+  }
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+  &__checkbox {
+    display: inline-block;
+    height: 1.8rem;
+  }
+  &__checkbox-label {
+    color: $color-white;
+    font-size: 1.4rem;
+    font-family: inherit;
+    margin-left: .5rem;
+  }
+  &__btn {
+    background-color: $color-primary;
+    width: 100%;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    border: none;
+    color: $color-white;
+    text-transform: uppercase;
+  }
 }
