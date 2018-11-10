@@ -1,26 +1,27 @@
+.nav-logo{
+  height: 50px;
+}
+
 .navbar{
-  height: 3.5em;
-  background-color: #006392;
-  
-  &__login{
-    color: #fff;
-    font-weight: bold;
-  }
-  
-  
+  padding: 0 11rem;
+  height: 8.3rem;
+  opacity: 0.9;
+  background: linear-gradient(46.01deg, $color-secondary 0%, $color-tertiary 100%);
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
+.dropdown-toggle::after {
+  display: none;
 }
 
-.center_items {
-  text-align: center;
+.dropdown-spacing{
+  padding: 0 3px;
 }
 
-.right-items {
-  text-align: right;
+.nav-link{
+  color: $color-white;
+  font-size: $default-font-size;
+}
+
+.nav-dashboard{
+  margin-right: 6.3rem;
 }

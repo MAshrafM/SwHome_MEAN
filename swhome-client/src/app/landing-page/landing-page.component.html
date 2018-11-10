@@ -4,7 +4,13 @@
     <img src="/src/assets/images/logo.png" alt="TRAV logo" class="header__logo">
   </div>
   <div class="header__login-box">
-    <a href="/login" class="header__login-link">Login</a>
+    <div class="dropdown">
+      <button class="dropdown-toggle header__login-link" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Login
+      </button>
+      <app-login></app-login>
+    </div>
   </div>
   <div class="header__text-box">
     <h1 class="header__heading-primary">Seek Adventure. Stay for Free.</h1>
@@ -47,5 +53,11 @@
   </section>
 </main><!-- End Main Section -->
 <footer class="footer">
-<p>&copy; All Rights Reserved.</p>
+  <div class="footer__copyright">
+    <p class="footer__copyright-text">&copy; 2018 All Right Reserved</p>
+  </div>
+  
+  <div class="footer__terms">
+    <p class="footer__terms-text">Terms & Conditions <span class="footer__terms-bracket">|</span> Privacy Policy</p>
+  </div>
 </footer>

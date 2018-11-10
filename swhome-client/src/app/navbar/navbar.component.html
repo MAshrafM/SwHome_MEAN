@@ -1,33 +1,32 @@
 <header>
-  <div class="pure-g container navbar">
-    <div class="pure-u-4-24 pure-u-md-4-24 pure-u-lg-4-24 pure-u-xl-4-24 center-items layout-items">
-      <h1 class="navbar__login"><a routerLink="/dashboard">TRAV</a></h1>
-    </div>
-     <div class="pure-u-14-24 pure-u-md-14-24 pure-u-lg-14-24 pure-u-xl-14-24"></div>
-     <div class="pure-u-6-24 pure-u-md-6-24 pure-u-lg-6-24 pure-u-xl-6-24">
-      <div class="pure-g container">
-        <div class="pure-u-1-3 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4 right-items layout-items"><h4><a routerLink="/dashboard">Dashboard</a></h4></div>
-        <div class="pure-u-1-3 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4 center-items layout-items"><h4><a href="logout()">Log out</a></h4></div>
-        <div class="pure-u-1-3 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4 center-items layout-item-avatar">
-          <div class="pure-menu pure-menu-horizontal left-items">
-            <ul class="pure-menu-list">
-              <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                <a id="menuLink1" class="pure-menu-link">
-                  <div *ngIf="user">
-                    <h3>{{user.firstName}}</h3>
-                  </div>
-                  <ul class="pure-menu-children">
-                    <li class="pure-menu-item"><a href="" class="pure-menu-link">My Profile</a></li>
-                    <li class="pure-menu-item"><a href="" class="pure-menu-link">Settings</a></li>
-                    <li class="pure-menu-item"><a (click)="logout()" class="pure-menu-link">Log Out</a></li>
-                  </ul>
-                </a>
-              </li>
-            </ul>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+      <img src="../../assets/images/logo.png" class="nav-logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link nav-dashboard" routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-dashboard" routerLink="/add-home">My Homes</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img class="icon-user align-self-center dropdown-spacing" src="../../assets/images/icon-user.png">
+            <span class="drop-down-text align-self-center dropdown-spacing">{{user.firstName}} {{user.lastName}}</span>
+            <img class="icon-arrow align-self-center dropdown-spacing" src="../../assets/images/icon-arrow-down.png">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <button class="dropdown-item" (click)="logout()">Logout</button>
           </div>
-        </div>
-        <div class="pure-u-1-4 pure-u-md-1-4 pure-u-lg-1-4 pure-u-xl-1-4"></div>
-      </div>
+        </li>
+       </ul>
     </div>
-  </div>
+  </nav>
 </header>

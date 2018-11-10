@@ -1,63 +1,22 @@
 <!-- Login Component -->
-<div class="login-container login">
-  <header>
-    <div class="login__nav pure-g">
-      <div class="login__nav--logo pure-u-1 center-items layout-items">
-        <h1><a routerLink="/">TRAV</a></h1>
-      </div>
-    </div>
-  </header>
-  <div *ngIf="!user">
-    <div class="pure-g">
-      <div class="pure-u-8-24 pure-u-md-8-24 pure-u-lg-8-24 pure-u-xl-8-24"></div>
-      <div class="login__form pure-u-8-24 pure-u-md-8-24 pure-u-lg-8-24 pure-u-xl-8-24 layout_items center_items">
-        <form class="login__form--info pure-form pure-form-stacked">
-          <fieldset>
-            <div class="pure-g container">
-              <div class="pure-u">
-                <h3>Welcome Back!</h3>
-              </div>
-            </div>
-            
-            <div class="container login__form--padding">
-              <input id="username" class="input_fields_width" type="text" name="username" [(ngModel)]="formInfo.username" placeholder="Username">
-            </div>
-            
-            <div class="container login__form--padding">
-              <input id="password" class="input_fields_width" type="password" name="password" [(ngModel)]="formInfo.password" placeholder="Password">
-            </div>
-            
-            <div class="container login__form--padding">
-              <div class="pure-u">
-                <label for="remember" class="pure-checkbox su-padding-items">
-                  <input id="remember" type="checkbox"> Remember me
-                </label>
-              </div>
-            </div>
-            
-            <div class="container login__form--padding">
-              <div class="pure-u">
-                <button (click)="login()" class="button-xlarge pure-button pure-button-primary">Sign in</button>
-              </div>
-            </div>
-          </fieldset>
-        </form>
-        <div class="login__signup pure-g container">
-          <div class="pure-u">
-            <p>Don't have an account? <a routerLink="">Sign up</a>.</p>
-          </div>
-        </div>
-      </div>
-      <div class="pure-u-8-24 pure-u-md-8-24 pure-u-lg-8-24 pure-u-xl-8-24"></div>
-    </div>
+<form class="dropdown-menu p-4 login-form">
+  <p class="login__error"> {{ error }} </p>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="email" class="form-control" id="username" name="username" [(ngModel)]="formInfo.username" placeholder="Username">
   </div>
-  
-  <div *ngIf="user">
-    <h2> You are now logged in as {{ user.username }} {{user._id}} </h2>
-    <button (click)="logout()"> logout </button>
-    <app-dashboard></app-dashboard>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="formInfo.password" placeholder="Password">
   </div>
-
-  <p class="error">{{error}}</p>
-</div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="rememberme">
+    <label class="form-check-label" for="rememberme">
+      Remember me
+    </label>
+  </div>
+  <button type="button" (click)="login()" class="btn btn-primary">
+    Sign in
+  </button>
+</form>
 <!-- End Login Component -->

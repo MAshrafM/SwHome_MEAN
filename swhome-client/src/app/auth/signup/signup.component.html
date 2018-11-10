@@ -15,6 +15,11 @@
       required>
     <label for="email" class="form__label">Email address</label>
   </div>
+  <div class="form__group">
+    <input type="text" class="form__input" placeholder="Username" id="username" [(ngModel)]="formInfo.username" name="username"
+      required>
+    <label for="username" class="form__label">Username</label>
+  </div>
    <div class="form__group">
     <input type="password" class="form__input" placeholder="Password" id="password" [(ngModel)]="formInfo.password"
       name="password" required>
