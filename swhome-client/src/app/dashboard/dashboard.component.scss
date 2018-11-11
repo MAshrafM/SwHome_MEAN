@@ -31,7 +31,6 @@
     grid-row: 1 / -1;
     display: grid;
     grid-template-rows: 15rem 1fr;
-    grid-template-columns: [col-start] .5fr repeat(2, 1fr) .5fr [col-end];
     justify-items: center;
     
     &__header{
@@ -41,19 +40,13 @@
       letter-spacing: -0.8px;
       line-height: 29px;
       text-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
-      align-self: end;
-    }
-    
-    &__text{
-      color: $color-grey;
-      font-size: 1.4rem;
-      grid-column: col-start 2 / col-end 3;
+      align-self: center;
     }
   }
   
   .header{
-    grid-column: full-start / full-end;
     display: grid;
+    grid-column: full-start / full-end;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     align-items: center;
     
@@ -74,7 +67,7 @@
   
   .data{
     grid-column: full-start / center-end;
-    background-color: $color-white;
+    background-color: $color--background-sec;
     border-radius: 1rem;
     box-shadow: 0 .2rem .5rem rgba($color-black, .2);
   }
@@ -92,7 +85,73 @@
     
     &-results {
       background-color: $color-red;
+      display: grid;
       grid-column: center-start / center-end;
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 30rem));
+      grid-column-gap: 4.5rem;
+      grid-row-gap: 6rem;
+      
+      &__card{
+        display: grid;
+        grid-template-columns: repeat(3, 10rem);
+        grid-template-rows: repeat(2, 1fr) .7fr;
+        background-color: $color-background-sec;
+        border-radius: 3px;
+        box-shadow: 0 .2rem .5rem rgba($color-black, .2);
+        align-content: center;
+      }
+      
+      &__date{
+        grid-column: 1 / 3;
+        color: $color-secondary;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+      }
+      
+      &__delete{
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        
+        &-btn{
+          background-color: $color-red-light;
+          color: $color-red-dark;
+          font-size: 1.3rem;
+          border-radius: 3rem;
+          padding: .3rem 2rem;
+          border: none;
+        }
+      }
+      
+      &__info{
+        display: grid;
+        justify-content: center;
+        
+        &-header {
+          font-size: 1.5rem;
+        }
+        
+        &-text{
+          font-size: 1.3rem;
+          justify-self: center;
+        }
+      }
+      
+      &__review{
+        display: grid;
+        grid-column: 1 / 4;
+        background-color: $color-grey-light;
+        justify-content: center;
+        
+        &-link{
+          text-decoration: none;
+          color: $color-grey-dark-2;
+          font-size: 1.3rem;
+          justify-self: center;
+          align-self: center;
+        }
+      }
     }
   }
   

@@ -16,19 +16,25 @@
       <h2 class="travel-header__main">Travel Requests</h2>
     </header>
     <section class="travel-results">
-      <div *ngIf="homes.length > 0">
-        <div *ngFor="let travel of travels">
-          <div class="travel-results__card">
-            <h4 class=travel-results__date>{{ travel.beginDate | date }} &mdash; {{ travel.endDate | date }}</h4>
-            
-            <button (click)="deleteTravel(travel._id)">Delete</button>
-            
-            <h5 class="travel-results__type">Type</h5>
-            <h5 class="travel-results__setting">Setting</h5>
-            <h5 class="travel-results__setting">Landscape</h5>
-             <a [routerLink]="['../edit-travel', travel._id]">Edit</a>
-            <a [routerLink]="['../results', travel._id]">View Results &gt;</a>
-          </div>
+      <div *ngFor="let travel of travels" class="travel-results__card">
+         <h4 class="travel-results__date">{{ travel.beginDate | date }} &mdash; {{ travel.endDate | date }}</h4>
+         <div class="travel-results__delete">
+          <button class="travel-results__delete-btn" (click)="deleteTravel(travel._id)">Delete</button>
+        </div>
+         <div class="travel-results__info">
+          <h5 class="travel-results__info-header">Type</h5>
+          <p class="travel-results__info-text">{{travel.home}}</p>
+        </div>
+         <div class="travel-results__info">
+          <h5 class="travel-results__info-header">Setting</h5>
+          <p class="travel-results__info-text">{{travel.setting}}</p>
+        </div>
+         <div class="travel-results__info">
+          <h5 class="travel-results__info-header">Landscape</h5>
+          <p class="travel-results__info-text">{{travel.landscape}}</p>
+        </div>
+        <div class="travel-results__review">
+          <a class="travel-results__review-link" [routerLink]="['../results', travel._id]">View Results &gt;</a>
         </div>
       </div>
     </section>

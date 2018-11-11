@@ -14,7 +14,7 @@
       </div>
       <div class="form-group col-md-6">
         <label>Property Type:</label>
-        <select class="form-control" [(ngModel)]="formInfo.home" name="home" required>
+        <select class="form-control" [(ngModel)]="newHome.home" name="home" required>
           <option>House</option>
           <option>Apt</option>
         </select>
@@ -63,7 +63,7 @@
       </div>
       <div class="form-group col-6">
         <label>Setting:</label>
-        <select class="form-control" [(ngModel)]="formInfo.setting" name="setting" required>
+        <select class="form-control" [(ngModel)]="newHome.setting" name="setting" required>
           <option>Urban</option>
           <option>Suburban</option>
           <option>Rural</option>
@@ -74,7 +74,16 @@
       <div class="form-group col-4">
         <label>State</label>
         <select class="form-control" name="state" [(ngModel)]="address.state" required>
-          <option>Florida</option>
+          <option>FL</option>
+          <option>AL</option>
+          <option>AK</option>
+          <option>AZ</option>
+          <option>AR</option>        
+          <option>CA</option>
+          <option>CO</option>
+          <option>CT</option>
+          <option>DE</option>
+          <option>DC</option>
         </select>
       </div>
       <div class="form-group col-md-2">
@@ -83,7 +92,7 @@
       </div>
       <div class="form-group col-6">
         <label>Landscape:</label>
-        <select class="form-control" [(ngModel)]="formInfo.landscape" name="landscape">
+        <select class="form-control" [(ngModel)]="newHome.landscape" name="landscape">
           <option>Tropical</option>
           <option>Mountainous</option>
           <option>City</option>
@@ -95,6 +104,14 @@
       <div class="col-12">
         <label>Description</label>
         <input class="form-control" type="text" name="description" [(ngModel)]="newHome.description" required />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-3">
+        <input type="file" name="file" ng2FileSelect [uploader]="uploader" multiple />
+      </div>
+      <div class="col-3">
+        <p>Queue length: {{ uploader?.queue?.length }}</p>
       </div>
     </div>
     <button type="button" class="btn btn-primary" (click)="submit()">Save</button>
