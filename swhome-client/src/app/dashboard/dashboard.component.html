@@ -3,7 +3,6 @@
   <div class="dashboard__container">
     <div class="sidebar">
       <h3 class="sidebar__header">Create Travel Request</h3>
-      <p class="sidebar__text">Pick what works best for you and let TRAV doing the searching.</p>
       <app-add-travel></app-add-travel>
     </div>
      <header class="header">
@@ -16,9 +15,22 @@
      <header class="travel-header">
       <h2 class="travel-header__main">Travel Requests</h2>
     </header>
-     <section class="travel-results">
-      Travel Results
-       <!-- <app-results></app-results> -->
+    <section class="travel-results">
+      <div *ngIf="homes.length > 0">
+        <div *ngFor="let travel of travels">
+          <div class="travel-results__card">
+            <h4 class=travel-results__date>{{ travel.beginDate | date }} &mdash; {{ travel.endDate | date }}</h4>
+            
+            <button (click)="deleteTravel(travel._id)">Delete</button>
+            
+            <h5 class="travel-results__type">Type</h5>
+            <h5 class="travel-results__setting">Setting</h5>
+            <h5 class="travel-results__setting">Landscape</h5>
+             <a [routerLink]="['../edit-travel', travel._id]">Edit</a>
+            <a [routerLink]="['../results', travel._id]">View Results &gt;</a>
+          </div>
+        </div>
+      </div>
     </section>
     <header class="connections-header">
         <h2 class="connections-header__main">Connections</h2>
