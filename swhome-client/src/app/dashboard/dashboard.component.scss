@@ -1,76 +1,103 @@
+@import '../scss/vars';
+
+%heading-secondary{
+  font-size: 2.5rem;
+  color: $color-grey-dark;
+  font-style: italic;
+  letter-spacing: -0.83px;
+}
+
 .dashboard {
  background-color: $color-background;
- font-size: $default-font-size;
  
   &__container {
-    margin: 6rem;
-     display: grid;
-    grid-template-rows: 10rem repeat(3, 15rem);
-    grid-template-columns: 30rem repeat(4, 1fr);
-    grid-gap: 2rem 4rem;
-  }
-  &__item {
-    background-color: orange;
+    display: grid;
+    grid-template-rows: 15rem 17rem 10rem minmax(7rem, min-content) 10rem minmax(7rem, min-content);
+    grid-template-columns: [sidebar-start] minmax(
+        17rem,
+        30rem
+      ) [sidebar-end full-start] minmax(1.5rem, 0.5fr) [center-start] repeat(
+        8,
+        [col-start] minmax(min-content, 13rem) [col-end]
+      )
+      [center-end] minmax(1.5rem, 0.5fr) [full-end];
   }
   
   &__sidebar {
     grid-row: 1 / -1;
-    grid-column: 1 / 2;
+    display: grid;
+    grid-template-rows: repeat(2, 10rem) 1fr;
+    grid-template-columns: auto-fit; 
+    justify-items: center;
+    
+    &__header{
+      color: $color-primary;
+      font-size: $default-font-size;
+    }
+    
+    &__text{
+      color: $color-grey;
+      font-size: $default-font-size;
+    }
   }
   
-  &__sidebar-heading {
-    color: $color-primary;	
-    font-family: $default-font-family;	
-    font-size: 2.4rem;
-    font-weight: bold;	
-    letter-spacing: -0.8px;	
-    text-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+  .header{
+    grid-column: full-start / full-end;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    align-items: center;
+    
+    &__main{
+      color: $color-grey;
+      font-family: $default-font-family;
+      font-size: 5rem;
+      font-weight: bold;
+      letter-spacing: -1.67px;
+    }
+    
+    &__text{
+      color: $color-grey;
+      font-size: $default-font-size;
+      font-family: $default-font-family;
+    }
   }
   
-  &__heading {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
+  .data{
+    background-color: $color-tertiary;
+    grid-column: full-start / full-end;
   }
   
-  &__heading-text {
-    color: $color-grey;
-    font-family: $default-font-family;
-    font-size: 5rem;
-    font-weight: bold;
-    width: 23rem;
-    letter-spacing: -1.67px;
-  }
- 
-  &__heading-secondary {
-    grid-row: 1 / 2;
-    grid-column: 3 / 6;
-  }
-  
-  &__heading-secondary-text {
-    color: $color-grey;
-    font-size: $default-font-size;
-    font-family: $default-font-family;
-    margin-top: 2rem;
+  .travel{
+    &-header{
+      grid-column: full-start / full-end;
+      display: grid;
+      align-items: center;
+      
+      &__main{
+        @extend %heading-secondary;
+      }
+    }
+    
+    &-results {
+      background-color: $color-red;
+      grid-column: center-start / center-end;
+    }
   }
   
-  &__item--4 {
-    grid-row: 2 / 3;
-    grid-column: 2 / 6; 
-    background-color: $color-white;
-    border: 2px solid $color-primary; 
-  }
-  
-  &__results-header {
-    grid-row: 3 / 4;
-    grid-column: 2 / 5;
-  }
-  
-  &__results-header-text {
-    color: $color-grey;
-    font-family: 'Lato';
-    font-size: 2.5rem;
-    font-style: italic;
-    letter-spacing: -0.83px;
-    text-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+  .connections {
+    &-header {
+      grid-column: full-start / full-end;
+      display: grid;
+      align-items: center;
+      
+      &__main {
+        @extend %heading-secondary;
+      }
+    }
+    
+    &-results {
+      background-color: salmon;
+      grid-column: center-start / center-end;
+    }
   }
 }

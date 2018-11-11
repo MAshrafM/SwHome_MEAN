@@ -25,9 +25,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
-}
+
 ol, ul {
 	list-style: none;
 }
@@ -63,10 +61,11 @@ a {
 }
 
 html{
+  box-sizing: border-box;
   font-size: 62.5%;
 }
 
 body {
-  box-sizing: border-box;
+  line-height: 1.6;
   font-family: 'Lato', sans-serif;
 }

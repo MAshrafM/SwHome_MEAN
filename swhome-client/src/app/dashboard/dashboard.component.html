@@ -1,157 +1,30 @@
 <app-navbar></app-navbar>
 <main class="dashboard">
   <div class="dashboard__container">
-    <div class="dashboard__item dashboard__sidebar">
-      <h3 class="dashboard__sidebar-heading">Select Travel Dates</h3>
+    <div class="sidebar">
+      <h3 class="sidebar__header">Create Travel Request</h3>
+      <p class="sidebar__text">Pick what works best for you and let TRAV doing the searching.</p>
+      <app-add-travel></app-add-travel>
     </div>
-    <div class="dashboard__item dashboard__heading">
-      <!-- Dashboard -->
-      <h1 class="dashboard__heading-text">Dashboard</h1>
-    </div>
-    <div class="dashboard__item dashboard__heading-secondary">
-      <h4 class="dashboard__heading-secondary-text">Manage your matches, connections and travel dates.</h4>
-    </div>
-    <div class="dashboard__item dashboard__item--4">Data Box</div>
-    <div class="dashboard__item dashboard__results-header">
-      <h3 class="dashboard__results-header-text">Results for Travel Dates</h3>
-    </div>
+     <header class="header">
+      <h1 class="header__main">Dashboard</h1>
+      <p class="header__text">Manage your travel requests, matches and connections.</p>
+    </header>
+     <section class="data">
+      Data
+    </section>
+     <header class="travel-header">
+      <h2 class="travel-header__main">Travel Requests</h2>
+    </header>
+     <section class="travel-results">
+      Travel Results
+       <!-- <app-results></app-results> -->
+    </section>
+    <header class="connections-header">
+        <h2 class="connections-header__main">Connections</h2>
+    </header>
+     <section class="connections__results">
+      Connection Results
+    </section>
    </div>
 </main>
-<!--
-<div class="dashboard-container">
-  <section class="myhome">
-    <div class="pure-g">
-      <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
-       
-      <div class="pure-u-18-24 pure-u-lg-18-24 pure-u-xl-18-24 myhome--spacing">
-        <div id="myhome__header" class="pure-g">
-          <div class="pure-u-2-24 pure-u-lg-2-24 pure-u-xl-2-24">
-          </div>
-          <div class="pure-u-17-24 pure-u-lg-17-24 pure-u-xl-17-24">
-            <h3>My Home</h3>
-          </div>
-          <div class="pure-u-4-24 pure-u-lg-4-24 pure-u-xl-4-24">
-            <button class="button-success button-small pure-button" routerLink="/add-home">
-              <i class="fas fa-plus-circle"></i>
-              Add Home
-            </button>
-          </div>
-          <div class="pure-u-1-24 pure-u-lg-1-24 pure-u-xl-1-24">
-          </div>
-        </div>
-        
-        <div class="myhome__date pure-g">
-          <div *ngFor="let home of homes">
-            <div class="pure-u-3-4 pure-u-lg-3-4 pure-u-xl-3-4 inline_flex">
-              <div *ngFor="let image of home.images">
-                <img [src]="image.url" />
-              </div>
-            </div>
-             <div class="pure-u-1-4 pure-u-lg-1-4 pure-u-xl-1-4">
-              <div class="pure-g">
-                <div class="pure-u-1">
-                  <p> {{ home.address.street }} </p>
-                </div>
-              </div>
-              <div class="pure-g">
-                <div class="pure-u-1">
-                  <p> {{ home.address.city }} </p>
-                </div>
-              </div><div class="pure-g">
-                <div class="pure-u-1">
-                  <p> {{ home.address.state }} </p>
-                </div>
-              </div>
-              <div class="pure-g">
-                <div class="pure-u-1">
-                  <p> {{ home.address.zipCode }} </p>
-                </div>
-              </div>
-              <div class="pure-g">
-                <div class="pure-u-1">
-                  <p> {{ home.address.country }} </p>
-                </div>
-              </div>
-             </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
-    </div>
-  </section>
-  <div *ngIf="homes.length > 0">
-    <div class="myhome">
-      <div class="pure-g">
-        <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
-        
-        <div class="pure-u-18-24 pure-u-lg-18-24 pure-u-xl-18-24 myhome--spacing">
-          <div class="myhome__header pure-g">
-            <div class="pure-u-2-24 pure-u-lg-2-24 pure-u-xl-2-24"></div>
-            <div class="pure-u-17-24 pure-u-lg-17-24 pure-u-xl-17-24">
-              <h3>My Travel Requests</h3>
-            </div>
-            <div class="pure-u-4-24 pure-u-lg-4-24 pure-u-xl-4-24">
-              <button class="button-success button-small pure-button" routerLink="/add-travel">
-                <i class="fas fa-plus-circle"></i>
-                Add Request
-              </button>
-            </div>
-            <div class="pure-u-2-24 pure-u-lg-2-24 pure-u-xl-2-24"></div>
-          </div>
-          
-          <div class="myhome__data pure-g">
-            <div *ngFor="let travel of travels">
-              <div class="pure-u-1 inline_flex">
-                <div class="pure-u-6-12 grow_flex">
-                  <p>Start Date: {{ travel.beginDate | date }} End Date: {{ travel.endDate | date }}</p>
-                </div>
-                <div class="pure-u-1-3 grow_flex"><a [routerLink]="['../edit-travel', travel._id]">Edit</a></div>
-                <div class="pure-u-1-3 grow_flex"> <a [routerLink]="['../results', travel._id]">Results</a></div>
-                <div class="pure-u-1-3 grow_flex"> <button (click)="deleteTravel(travel._id)">Delete</button></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
-        
-      </div>
-    </div>
-  </div>
-  <div *ngIf="matches.length > 0">
-    <div class="myhome">
-      <div class="pure-g">
-        <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
-        
-        <div class="pure-u-18-24 pure-u-lg-18-24 pure-u-xl-18-24 myhome--spacing">
-          <div class="myhome__header pure-g">
-            <div class="pure-u-2-24 pure-u-lg-2-24 pure-u-xl-2-24"></div>
-            <div class="pure-u-21-24 pure-u-lg-21-24 pure-u-xl-21-24">
-              <h3>My Matches</h3>
-            </div>
-            
-            <div class="pure-u-1-24 pure-u-lg-1-24 pure-u-xl-1-24"></div>
-          </div>
-          
-          <div class="myhome__data pure-g">
-            <div *ngFor="let match of matches">
-              <div class="pure-u-1">
-              <div *ngIf="match.active == true">
-                <div *ngIf="match.userRequest1.user === userId">
-                  <a [routerLink]="['../matches', match.userRequest2._id, match._id]">Start Date: {{connection.userRequest1.beginDate | date}} End Date: {{connection.userRequest1.endDate | date }}</a>
-                </div>
-                <div *ngIf="match.userRequest2.user === userId">
-                  <a [routerLink]="['../matches', match.userRequest1._id, match._id]">Start Date: {{connection.userRequest2.beginDate | date}} End Date: {{connection.userRequest2.endDate | date }}</a>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pure-u-3-24 pure-u-lg-3-24 pure-u-xl-3-24 myhome--spacing"></div>
-        
-      </div>
-    </div>
-  </div>
-</div>
--->

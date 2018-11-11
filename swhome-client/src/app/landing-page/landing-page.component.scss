@@ -75,7 +75,7 @@
   display: grid;
   margin: 7rem 14rem;
   grid-template-rows: 20rem;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(min-content, 20rem));
   grid-gap: 5rem;
   align-items: center;
   justify-items: center;
