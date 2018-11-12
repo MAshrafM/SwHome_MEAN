@@ -117,3 +117,39 @@
     color: $color-grey;
   }
 }
+
+.dropdown {
+  position: absolute;
+  top: 5rem;
+  right: 6.5rem;
+  display: inline-block;
+  font-size: $default-font-size;
+  font-weight: bold;
+  padding: .5rem 3.5rem 1rem;
+  border-radius: 1.8rem;
+  border: 1px solid $color-primary;
+  background-color: $color-white;
+  color: $color-primary;
+  text-decoration: none;
+  height: 3.6rem;
+  transition: all .2s;
+  
+  &-toggle {
+    background-color: $color-white;
+    font-size: $default-font-size;
+    font-weight: bold;
+    border: none;
+    outline: none;
+  }
+  
+  &:hover {
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  }
+  
+  &:active,
+  &:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+}
