@@ -1,20 +1,50 @@
-<app-navbar></app-navbar>
-<form>
-  <h2> Add Travel </h2>
-  <label> Start Date </label>
-  <input type="date" [(ngModel)]="formInfo.beginDate" name="beginDate"/>
-  <br>
-  <label> End Date </label>
-  <input type="date" [(ngModel)]="formInfo.endDate" name="endDate"/>
-  <br>
-  <label> Home Type </label>
-  <input type="text" [(ngModel)]="formInfo.home" name="home"/>
-  <br>
-  <label> Setting </label>
-  <input type="text" [(ngModel)]="formInfo.setting" name="setting"/>
-  <br>
-  <label> Landscape </label>
-  <input type="text" [(ngModel)]="formInfo.landscape" name="landscape"/>
-  <br>
-  <button type="button" (click)="addTravel()"> Add Request </button>
-</form>
+<form class="form-box">
+  <div class="form-row">
+    <div class="form-group col-12">
+      <label>Start Date:</label>
+      <label class="form__text">Start Date</label>
+      <input type="date" [(ngModel)]="formInfo.beginDate" name="beginDate" class="form-control">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-12">
+      <label>End Date:</label>
+      <label class="form__text">End Date</label>
+      <input type="date" [(ngModel)]="formInfo.endDate" name="endDate" class="form-control">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-12">
+      <label>Home Type:</label>
+      <label class="form__text">Home Type</label>
+      <select class="form-control" [(ngModel)]="formInfo.home" name="home">
+        <option>House</option>
+        <option>Apt</option>
+       </select>
+     </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-12">
+      <label>Setting:</label>
+      <label class="form__text">Setting</label>
+      <select class="form-control" [(ngModel)]="formInfo.setting" name="setting">
+        <option>Urban</option>
+        <option>Suburban</option>
+         <option>Rural</option>
+       </select>
+     </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-12">
+      <label>Landscape:</label>
+      <label class="form__text">Landscape</label>
+      <select class="form-control" [(ngModel)]="formInfo.landscape" name="landscape">
+        <option>Tropical</option>
+        <option>Mountainous</option>
+         <option>City</option>
+         <option>Coastal</option>
+       </select>
+     </div>
+   </div>
+   <button type="button" class="btn btn-primary col-12" (click)="addTravel()"> Request Dates </button>
+ </form>

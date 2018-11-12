@@ -12,11 +12,11 @@
 }
 
 .dashboard {
- background-color: $color-background;
+ background-color: $color-background-sec;
  
   &__container {
     display: grid;
-    grid-template-rows: 15rem 17rem 10rem minmax(7rem, min-content) 10rem minmax(7rem, min-content);
+    grid-template-rows: 15rem 17rem 10rem minmax(7rem, min-content) 10rem minmax(7rem, min-content) 10rem;
     grid-template-columns: [sidebar-start] minmax(
         17rem,
         30rem
@@ -27,7 +27,7 @@
       [center-end] minmax(1.5rem, 0.5fr) [full-end];
   }
   
-  &__sidebar {
+  .sidebar {
     grid-row: 1 / -1;
     display: grid;
     grid-template-rows: 15rem 1fr;
@@ -70,6 +70,46 @@
     background-color: $color--background-sec;
     border-radius: 1rem;
     box-shadow: 0 .2rem .5rem rgba($color-black, .2);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 40rem));
+    justify-items: center;
+    
+    &__requests {
+      align-self: center;
+      justify-items: center;
+      display: grid;
+      justify-content: center;
+    }
+    
+    &__number  {
+      color: $color-grey;
+      font-size: 7rem;
+    }
+    
+    &__header {
+      color: $color-grey-dark;
+      font-size: 1.7rem;
+    }
+    
+    &__connections {
+      align-self: center;
+      justify-items: center;
+      display: grid;
+      justify-content: center;
+    }
+    
+    &__home {
+      align-self: center;
+      justify-items: center;
+      display: grid;
+      justify-content: center;
+      &-btn {
+        font-size: 1.5rem;
+        border: 1px solid $color-primary;
+        background-color: $color-background-2;
+        border-radius: 3rem;
+        padding: .3rem 2rem;
+      }
   }
   
   .travel{
@@ -90,15 +130,26 @@
       grid-template-columns: repeat(auto-fit, minmax(30rem, 30rem));
       grid-column-gap: 4.5rem;
       grid-row-gap: 6rem;
+      transition: transform 1s;
       
       &__card{
         display: grid;
         grid-template-columns: repeat(3, 10rem);
         grid-template-rows: repeat(2, 1fr) .7fr;
         background-color: $color-background-sec;
-        border-radius: 3px;
-        box-shadow: 0 .2rem .5rem rgba($color-black, .2);
+        border-radius: 8px;
+        box-shadow: 0 1.2rem 4rem rgba($color-black, .15);
         align-content: center;
+        
+        &:hover {
+          transform: scale(1.01) translateY(-1rem);
+          box-shadow: 0 1.6rem 4rem rgba($color-black, .2);
+        }
+      }
+      
+      &__no-info {
+        font-size: 1.8rem;
+        color: $color-secondary;
       }
       
       &__date{
@@ -147,7 +198,7 @@
         &-link{
           text-decoration: none;
           color: $color-grey-dark-2;
-          font-size: 1.3rem;
+          font-size: 1.4rem;
           justify-self: center;
           align-self: center;
         }
@@ -169,10 +220,60 @@
     &-results {
       display: grid;
       grid-column: center-start / center-end;
-      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-      grid-template-rows: 15rem;
+      grid-template-columns: repeat(auto-fit, minmax(30rem, max-content));
       grid-column-gap: 4.5rem;
       grid-row-gap: 6rem;
+      transition: transform 1s;
+      
+      &__card {
+        display: grid;
+        grid-template-columns: repeat(3, 10rem);
+        grid-template-rows: repeat(2, 1fr) .7fr;
+        background-color: $color-background-2;
+        border-radius: 5px;
+        box-shadow: 0 1.2rem 4rem rgba($color-black, .15);
+        align-content: center;
+        overflow: hidden;
+        
+        &:hover {
+          transform: scale(1.01) translateY(-1rem);
+          box-shadow: 0 1.6rem 4rem rgba($color-black, .2);
+        }
+      }
+      
+      &__date {
+        grid-column: 1 / 3;
+        color: $color-secondary;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+      }
+      
+      &__text {
+        grid-column: 1 / 4;
+        font-size: $default-font-size;
+      }
+      
+      &__info {
+        grid-column: 1 / 4;
+        background-color: $color-grey-light;
+        display: grid;
+        justify-content: center;
+        
+        &-link {
+          text-decoration: none;
+          color: $color-grey-dark-2;
+          font-size: 1.4rem;
+          padding: .5rem 0;
+          justify-self: center;
+          align-self: center;
+        }
+      }
+      
+      &__no-info {
+        font-size: 1.8rem;
+        color: $color-secondary;
+      }
     }
   }
 }

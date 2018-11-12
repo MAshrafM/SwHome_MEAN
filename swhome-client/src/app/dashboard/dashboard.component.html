@@ -9,13 +9,30 @@
       <h1 class="header__main">Dashboard</h1>
       <p class="header__text">Manage your travel requests, matches and connections.</p>
     </header>
-     <section class="data">
-      Data
+    <section class="data">
+      <div class="data__requests">
+        <div class="data__number" *ngIf="travels.length > 0">{{travels.length}}</div>
+        <div class="data__number" *ngIf="travels.length == 0">{{travels.length}}</div>
+        <h4 class="data__header">Travel Requests</h4>
+      </div>
+       <div class="data__connections">
+        <div class="data__number" *ngIf="matches.length > 0">{{matches.length}}</div>
+        <div class="data__number" *ngIf="matches.length == 0">{{matches.length}}</div>
+        <h4 class="data__header">Connections</h4>
+      </div>
+       <div *ngIf="homes.length == 0">
+        <div class="data__home">
+          <button class="date__home-btn" routerLink="/add-home">Add home</button>
+        </div>
+      </div>
     </section>
      <header class="travel-header">
       <h2 class="travel-header__main">Travel Requests</h2>
     </header>
     <section class="travel-results">
+      <div *ngIf="travels.length == 0">
+        <p class="travel-results__no-info">Take the first step on your adventure and create a travel request!</p>
+      </div>
       <div *ngFor="let travel of travels" class="travel-results__card">
          <h4 class="travel-results__date">{{ travel.beginDate | date }} &mdash; {{ travel.endDate | date }}</h4>
          <div class="travel-results__delete">
@@ -42,7 +59,33 @@
         <h2 class="connections-header__main">Connections</h2>
     </header>
      <section class="connections__results">
-      Connection Results
+      <div *ngIf="matches.length == 0">
+        <p class="connections-results__no-info">Keep reviewing your matches and like away!</p>
+      </div>
+       <div *ngFor="let match of matchs">
+        <div *ngIf="match.active == true ">
+          <div *ngIf="match.userRequest1.user === userId" class="connections-results__card">
+            <h4 class="connections-results__date">
+              {{match.userRequest1.beginDate | date }} &mdash; {{match.userRequest1.endDate | date }}
+            </h4>
+            <p class="connections-results__text">You connected with {{match.user2.firstName}}!</p>
+            <div class="connections-results__info">
+              <a class="connections-results__info-link" [routerLink]="['/matches', match.userRequest2._id, match._id]">View
+                more info &gt;</a>
+            </div>
+          </div>
+           <div *ngIf="match.userRequest2.user === userId" class="connections-results__card">
+            <h4 class="connections-results__date">
+              {{match.userRequest2.beginDate | date }} &mdash; {{match.userRequest2.endDate | date }}
+            </h4>
+            <p class="connections-results__text">You connected with {{match.user1.firstName}}!</p>
+            <div class="connections-results__info">
+              <a class="connections-results__info-link" [routerLink]="['/matches', match.userRequest1._id, match._id]">
+                View more info &gt;</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
    </div>
 </main>
